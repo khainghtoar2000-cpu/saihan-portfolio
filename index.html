@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- SEO & Metadata -->
+  <title>Saihan — Visuals, Systems, Growth</title>
+  <meta name="description" content="Independent commercial photographer, full-stack web developer, and growth strategist. High-end visual campaigns, custom MySQL systems, and scale-driven performance." />
+  <meta name="author" content="Saihan" />
+  
+  <!-- OpenGraph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Saihan — Visuals, Systems, Growth" />
+  <meta property="og:description" content="Commercial Photography, Full-Stack Web Development, and Performance Growth." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1200&auto=format&fit=crop" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'deep-black': '#070709',
+            'glass-surface': 'rgba(18, 18, 24, 0.55)',
+            'vibrant-red': '#ff2a3a',
+            'crimson-red': '#d90429',
+            'off-white': '#f4f4f0'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Glassmorphism & Radial Spheres Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg-deep-black text-off-white min-h-screen flex flex-col antialiased selection:bg-vibrant-red selection:text-white relative">
+
+  <!-- ====================================================================== -->
+  <!-- AMBIENT CORNER RADIAL GRADIENT SPHERES & PARTICLE TERRAIN (IMAGE 2 REF) -->
+  <!-- ====================================================================== -->
+  <div class="radial-circles-background" aria-hidden="true">
+    <div class="radial-orb-top-right"></div>
+    <div class="radial-orb-bottom-left"></div>
+    <div class="radial-orb-mid-left"></div>
+    <div class="radial-orb-bottom-right"></div>
+    <!-- Live 3D Particle Point Cloud Terrain / Wave Landscape (Image 2 Ref) -->
+    <canvas id="bgParticleTerrainCanvas" class="bg-particle-terrain-canvas"></canvas>
+  </div>
+
+  <!-- ====================================================================== -->
+  <!-- TOP STATUS BAR -->
+  <!-- ====================================================================== -->
+  <div class="glass-navbar border-b border-white/10 py-2.5 px-4 sm:px-8 text-[11px] font-mono-tech text-zinc-300 flex flex-wrap items-center justify-between gap-2 z-50">
+    <div class="flex items-center gap-3">
+      <span class="text-white font-bold tracking-wider uppercase">INDEX // 2026</span>
+      <span class="text-zinc-600 hidden sm:inline">&bull;</span>
+      <span class="hidden sm:inline text-zinc-400">COMMERCIAL PHOTOGRAPHY &bull; FULL-STACK &bull; GROWTH</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <span class="red-pulse-dot"></span>
+      <span class="text-zinc-200 tracking-wider uppercase">AVAILABLE FOR COMMISSIONS (Q3/Q4)</span>
+    </div>
+  </div>
+
+  <!-- ====================================================================== -->
+  <!-- GLASS STICKY HEADER -->
+  <!-- ====================================================================== -->
+  <header class="sticky top-0 z-40 glass-navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-2 group">
+        <span class="font-syne font-black text-2xl tracking-tight text-white group-hover:text-vibrant-red transition-colors uppercase">
+          SAIHAN<span class="text-vibrant-red">.</span>
+        </span>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 font-space text-xs font-bold tracking-wider uppercase">
+        <a href="#visuals" class="text-zinc-300 hover:text-white transition-colors">
+          VISUALS
+        </a>
+        <a href="#systems" class="text-zinc-300 hover:text-white transition-colors">
+          SYSTEMS
+        </a>
+        <a href="#growth" class="text-zinc-300 hover:text-white transition-colors">
+          GROWTH
+        </a>
+        <a href="#work" class="text-zinc-300 hover:text-white transition-colors">
+          SELECTED WORK
+        </a>
+      </nav>
+
+      <!-- Glass Pill CTA Button (Image 1 Style) -->
+      <div class="hidden sm:flex items-center gap-4">
+        <a href="#contact" class="glass-btn-pill">
+          <span class="glass-icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 17L17 7M17 7H7M17 7v10" />
+            </svg>
+          </span>
+          <span>START A PROJECT</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobileMenuBtn" aria-label="Toggle Menu" class="p-2.5 rounded-xl bg-white/5 border border-white/10 text-white md:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileMenu" class="hidden md:hidden bg-zinc-950/95 backdrop-blur-2xl border-b border-white/10 px-6 py-6 font-space text-xs uppercase space-y-4">
+      <a href="#visuals" class="mobile-nav-link block py-2 border-b border-white/10 text-zinc-300">
+        VISUALS // COMMERCIAL PHOTOGRAPHY
+      </a>
+      <a href="#systems" class="mobile-nav-link block py-2 border-b border-white/10 text-zinc-300">
+        SYSTEMS // FULL-STACK & MYSQL
+      </a>
+      <a href="#growth" class="mobile-nav-link block py-2 border-b border-white/10 text-zinc-300">
+        GROWTH // PERFORMANCE MARKETING
+      </a>
+      <a href="#work" class="mobile-nav-link block py-2 border-b border-white/10 text-zinc-300">
+        SELECTED WORK // ARCHIVE
+      </a>
+      <a href="#contact" class="mobile-nav-link block py-2 text-vibrant-red font-bold">
+        START A PROJECT &rarr;
+      </a>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    <!-- ==================================================================== -->
+    <!-- HERO SECTION (FROSTED GLASS HERO + CORNER CIRCLE GLOW) -->
+    <!-- ==================================================================== -->
+    <section class="pt-28 pb-12 sm:pt-32 sm:pb-16 lg:pt-36 lg:pb-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          <!-- Hero Left Column: Glassmorphic Editorial Card -->
+          <div class="lg:col-span-7 space-y-6">
+            
+            <div class="glass-hero-card p-6 sm:p-10 lg:p-12 space-y-6 relative overflow-hidden">
+              
+              <!-- Top Badge & Status -->
+              <div class="flex items-center justify-between">
+                <span class="glass-badge font-mono-tech uppercase text-[11px] text-zinc-300">
+                  <span class="w-1.5 h-1.5 rounded-full bg-vibrant-red"></span>
+                  EDITION 2026
+                </span>
+                <span class="text-xs font-mono-tech text-zinc-400">COMMERCIAL &bull; CODE</span>
+              </div>
+
+              <!-- Main Stark Headline (Fixed Wrapping & Zero Word-Breaks) -->
+              <h1 class="font-syne font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight text-white uppercase leading-none sm:leading-[1.0] hero-stark-headline">
+                <span class="block whitespace-nowrap">SAIHAN<span class="text-vibrant-red">.</span></span>
+                <span class="block whitespace-nowrap text-zinc-400">VISUALS.</span>
+                <span class="block whitespace-nowrap text-white">SYSTEMS.</span>
+                <span class="block whitespace-nowrap text-vibrant-red">GROWTH.</span>
+              </h1>
+
+              <!-- Updated Confident Subtext -->
+              <p class="text-zinc-300 text-base sm:text-lg max-w-xl leading-relaxed font-normal">
+                Crafting bold commercial visuals, custom web systems, and high-conversion growth. One unified creative workflow &mdash; zero agency bloat.
+              </p>
+
+              <!-- Action Buttons (Image 1 Glassmorphic Style) -->
+              <div class="flex flex-wrap items-center gap-4 pt-2">
+                
+                <!-- Primary Glass Pill with Red Action Circle Badge -->
+                <a href="#contact" class="glass-btn-pill">
+                  <span class="glass-icon-circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 17L17 7M17 7H7M17 7v10" />
+                    </svg>
+                  </span>
+                  <span>START A PROJECT</span>
+                </a>
+
+                <!-- Secondary Frosted Glass Button -->
+                <a href="#work" class="glass-btn-secondary">
+                  <span>SELECTED WORK</span>
+                  <span>&darr;</span>
+                </a>
+
+                <!-- Copy Email Trigger -->
+                <button class="copy-email-btn glass-btn-secondary text-xs font-mono-tech uppercase" data-email="hello@saihan.com">
+                  COPY EMAIL
+                </button>
+              </div>
+
+              <!-- Specs Footer Strip -->
+              <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/10 text-xs font-mono-tech">
+                <div>
+                  <div class="text-zinc-500 uppercase">LOCATION</div>
+                  <div class="text-white font-bold mt-1">AVAILABLE WORLDWIDE</div>
+                </div>
+                <div>
+                  <div class="text-zinc-500 uppercase">DISCIPLINES</div>
+                  <div class="text-white font-bold mt-1">PHOTO / CODE / ADS</div>
+                </div>
+                <div>
+                  <div class="text-zinc-500 uppercase">ENGAGEMENT</div>
+                  <div class="text-white font-bold mt-1">CONTRACT / RETAINER</div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Hero Right Column: Clean Editorial Portrait Card -->
+          <div class="lg:col-span-5">
+            <div class="glass-hero-card p-4 sm:p-6 space-y-4 relative group">
+              
+              <!-- Editorial Portrait Frame -->
+              <div class="relative aspect-[3/4] sm:aspect-[4/5] w-full overflow-hidden rounded-2xl bg-zinc-950 border border-white/15 shadow-2xl group">
+                
+                <!-- Pure CSS Ambient Glow -->
+                <div class="absolute -inset-1 bg-gradient-to-tr from-vibrant-red/20 via-transparent to-white/10 rounded-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+
+                <!-- User's Editorial Portrait Image (Static & Clean) -->
+                <img 
+                  id="heroPortraitImg"
+                  src="assets/images/my-photo.jpg" 
+                  alt="Saihan - Commercial Visuals & Technical Direction" 
+                  class="relative z-10 w-full h-full object-cover object-center filter contrast-125 brightness-100 group-hover:brightness-110 group-hover:contrast-130 transition duration-300 rounded-2xl"
+                  onerror="this.src='assets/img/portrait.jpg'"
+                />
+
+                <!-- Fire Ember Rising Overlay (Subtle Warm Particles) -->
+                <canvas id="fireEmbersCanvas" class="absolute inset-0 z-20 w-full h-full pointer-events-none mix-blend-screen rounded-2xl"></canvas>
+
+                <!-- Subtle Pure CSS Shadow & Mood Gradient Overlay -->
+                <div class="absolute inset-0 z-20 pointer-events-none bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-80 group-hover:opacity-60 transition duration-300"></div>
+
+                <!-- Brutalist Corner Badges -->
+                <div class="absolute top-4 left-4 z-30 glass-badge text-[10px] font-mono-tech uppercase text-white flex items-center gap-1.5 pointer-events-none">
+                  <span class="w-1.5 h-1.5 rounded-full bg-vibrant-red animate-pulse"></span>
+                  <span>PORTRAIT // EDITORIAL</span>
+                </div>
+                <div class="absolute top-4 right-4 z-30 glass-badge text-[10px] font-mono-tech text-zinc-300 pointer-events-none">
+                  FIG. 01 — SAIHAN
+                </div>
+                <div class="absolute bottom-4 left-4 z-30 glass-badge text-[10px] font-mono-tech text-zinc-300 pointer-events-none">
+                  VISUAL &bull; CODE &bull; GROWTH
+                </div>
+                <div class="absolute bottom-4 right-4 z-30 glass-badge text-[10px] font-mono-tech text-vibrant-red font-bold pointer-events-none">
+                  4:5 MASTER
+                </div>
+              </div>
+
+              <!-- Metadata Caption Bar -->
+              <div class="flex items-center justify-between text-xs font-mono-tech text-zinc-400 px-1">
+                <span>FIG. 01 — SAIHAN &bull; EDITORIAL PORTRAIT</span>
+                <span class="text-vibrant-red font-bold">ACTIVE</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- 3 PILLARS: VISUALS / SYSTEMS / GROWTH (FROSTED GLASS CARDS) -->
+    <!-- ==================================================================== -->
+    <section class="py-20 scroll-mt-28" id="services">
+      <div class="max-w-7xl mx-auto px-4 sm:px-8">
+        
+        <!-- Section Header -->
+        <div class="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div>
+            <div class="font-mono-tech text-xs text-vibrant-red uppercase tracking-widest mb-2">[01-03] DISCIPLINES</div>
+            <h2 class="font-syne font-black text-4xl sm:text-6xl text-white uppercase tracking-tight">
+              CORE SERVICES.
+            </h2>
+          </div>
+          <p class="text-zinc-400 font-space text-xs sm:text-sm max-w-md">
+            Three interconnected disciplines engineered for brands requiring both aesthetic authority and technical reliability.
+          </p>
+        </div>
+
+        <!-- 3 Pillars Grid (Stacked Deck Interactive Fan-out) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-12">
+          
+          <!-- Pillar 1: Visuals (Stacked Deck) -->
+          <div id="visuals" class="relative group/stack scroll-mt-28">
+            
+            <!-- Under-layer Deck Card 2 (Bottom - Fans Left) -->
+            <div class="absolute inset-0 rounded-[1.75rem] bg-zinc-950/80 border border-white/5 shadow-2xl transform -rotate-3 sm:-rotate-6 translate-x-1 translate-y-3 opacity-40 group-hover/stack:-rotate-8 group-hover/stack:-translate-x-4 group-hover/stack:translate-y-5 group-hover/stack:opacity-75 transition-all duration-300 ease-out pointer-events-none overflow-hidden">
+              <div class="p-6 h-full flex flex-col justify-between">
+                <div class="font-mono-tech text-[10px] text-zinc-500 uppercase flex items-center justify-between">
+                  <span>RAW_STILLS // 35MM</span>
+                  <span>+ + +</span>
+                </div>
+                <div class="font-mono-tech text-[10px] text-zinc-400">
+                  LOOKBOOK REEL // 4K 60FPS
+                </div>
+              </div>
+            </div>
+
+            <!-- Under-layer Deck Card 1 (Middle - Fans Right) -->
+            <div class="absolute inset-0 rounded-[1.75rem] bg-zinc-900/60 border border-white/10 shadow-xl transform rotate-2 sm:rotate-3 translate-x-2 translate-y-1.5 opacity-60 group-hover/stack:rotate-6 group-hover/stack:translate-x-4 group-hover/stack:translate-y-2 group-hover/stack:opacity-90 transition-all duration-300 ease-out pointer-events-none overflow-hidden">
+              <div class="p-6 h-full flex flex-col justify-between">
+                <div class="font-mono-tech text-[10px] text-vibrant-red/80 uppercase flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-vibrant-red"></span>
+                  <span>FIG. 01A // EDITORIAL</span>
+                </div>
+                <div class="font-mono-tech text-[10px] text-zinc-400">
+                  SHINJUKU MASTER // 300 DPI
+                </div>
+              </div>
+            </div>
+
+            <!-- Main Top Service Card -->
+            <div class="relative z-10 glass-card p-8 flex flex-col justify-between group h-full transform group-hover/stack:-translate-y-2 transition-all duration-300 ease-out">
+              <div class="space-y-6">
+                <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                  <span class="font-mono-tech text-xs text-zinc-400 uppercase">SECTION 01</span>
+                  <span class="glass-badge font-space text-xs font-bold text-white">VISUALS</span>
+                </div>
+
+                <h3 class="font-syne font-bold text-2xl text-white uppercase group-hover:text-vibrant-red transition-colors">
+                  Commercial Visuals & Media
+                </h3>
+
+                <p class="text-zinc-300 text-sm leading-relaxed">
+                  High-end commercial photography, editorial lookbooks, and 4K short-form video reels produced on location and in studio.
+                </p>
+
+                <ul class="space-y-3 font-mono-tech text-xs text-zinc-300 pt-2">
+                  <li class="flex items-start gap-2.5">
+                    <span class="text-vibrant-red font-bold">&bull;</span>
+                    <span>Commercial & Lookbook Photography</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <span class="text-vibrant-red font-bold">&bull;</span>
+                    <span>4K Video Direction & Social Reels</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <span class="text-vibrant-red font-bold">&bull;</span>
+                    <span>Brand Identity & Editorial Typography</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <span class="text-vibrant-red font-bold">&bull;</span>
+                    <span>Color Grading & High-Res Retouching</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="pt-6 mt-6 border-t border-white/10 flex flex-col gap-3">
+                <div class="flex items-center justify-between text-xs font-mono-tech">
+                  <span class="text-zinc-400">PROJECT-BASED // RETAINER</span>
+                  <span class="text-vibrant-red font-bold">ACTIVE</span>
+                </div>
+                <a 
+                  href="#contact" 
+                  data-inquiry-msg="Inquiring about Commercial Visuals & Media production retainer/project." 
+                  class="service-inquire-btn glass-btn-secondary w-full py-3.5 text-xs font-mono-tech uppercase font-bold justify-center tracking-wider"
+                >
+                  <span>INQUIRE</span>
+                  <span>&rarr;</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Pillar 2: Systems (Stacked Deck) -->
+          <div id="systems" class="relative group/stack scroll-mt-28">
+            
+            <!-- Under-layer Deck Card 2 (Bottom - Fans Left) -->
+            <div class="absolute inset-0 rounded-[1.75rem] bg-zinc-950/80 border border-white/5 shadow-2xl transform -rotate-3 sm:-rotate-5 -translate-x-1 translate-y-3 opacity-40 group-hover/stack:-rotate-7 group-hover/stack:-translate-x-4 group-hover/stack:translate-y-5 group-hover/stack:opacity-75 transition-all duration-300 ease-out pointer-events-none overflow-hidden">
+              <div class="p-6 h-full flex flex-col justify-between">
+                <div class="font-mono-tech text-[10px] text-zinc-500 uppercase flex items-center justify-between">
+                  <span>LATENCY // 1.2MS</span>
+                  <span>[ PDO_OK ]</span>
+                </div>
+                <div class="font-mono-tech text-[9px] text-zinc-400">
+                  <code>SELECT * FROM schema_master;</code>
+                </div>
+              </div>
+            </div>
+
+            <!-- Under-layer Deck Card 1 (Middle - Fans Right) -->
+            <div class="absolute inset-0 rounded-[1.75rem] bg-zinc-900/60 border border-white/10 shadow-xl transform rotate-2 sm:rotate-4 translate-x-2 translate-y-1.5 opacity-60 group-hover/stack:rotate-6 group-hover/stack:translate-x-4 group-hover/stack:translate-y-2 group-hover/stack:opacity-90 transition-all duration-300 ease-out pointer-events-none overflow-hidden">
+              <div class="p-6 h-full flex flex-col justify-between">
+                <div class="font-mono-tech text-[10px] text-vibrant-red/80 uppercase flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-vibrant-red"></span>
+                  <span>MYSQL 8.0 // INNODB</span>
+                </div>
+                <div class="font-mono-tech text-[10px] text-zinc-400">
+                  INDEXED QUERY ENGINE
+                </div>
+              </div>
+            </div>
+
+            <!-- Main Top Service Card -->
+            <div class="relative z-10 glass-card p-8 flex flex-col justify-between group h-full transform group-hover/stack:-translate-y-2 transition-all duration-300 ease-out">
+              <div class="space-y-6">
+                <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                  <span class="font-mono-tech text-xs text-zinc-400 uppercase">SECTION 02</span>
+                  <span class="glass-badge font-space text-xs font-bold text-white">SYSTEMS</span>
+                </div>
+
+                <h3 class="font-syne font-bold text-2xl text-white uppercase group-hover:text-vibrant-red transition-colors">
+                  Tech & Database Systems
+                </h3>
+
+                <p class="text-zinc-300 text-sm leading-relaxed">
+                  Lean, robust full-stack web applications, normalized MySQL architectures, and custom dashboards built for speed and longevity.
+                </p>
+
+                <ul class="space-y-3 font-mono-tech text-xs text-zinc-300 pt-2">
+                  <li class="flex items-start gap-2.5">
+                    <span class="text-vibrant-red font-bold">&bull;</span>
+                    <span>Full-Stack Web Applications</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <span class="text-vibrant-red font-bold">&bull;</span>
+                    <span>MySQL Relational Database Architecture</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <span class="text-vibrant-red font-bold">&bull;</span>
+                    <span>PHP 8+ RESTful APIs & Integrations</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <span class="text-vibrant-red font-bold">&bull;</span>
+                    <span>Admin Portals & Operations Tooling</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="pt-6 mt-6 border-t border-white/10 flex flex-col gap-3">
+                <div class="flex items-center justify-between text-xs font-mono-tech">
+                  <span class="text-zinc-400">CUSTOM BUILD // SPRINT</span>
+                  <span class="text-vibrant-red font-bold">ACTIVE</span>
+                </div>
+                <a 
+                  href="#contact" 
+                  data-inquiry-msg="Inquiring about Tech & Database Systems custom build." 
+                  class="service-inquire-btn glass-btn-secondary w-full py-3.5 text-xs font-mono-tech uppercase font-bold justify-center tracking-wider"
+                >
+                  <span>INQUIRE</span>
+                  <span>&rarr;</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Pillar 3: Growth (Stacked Deck) -->
+          <div id="growth" class="relative group/stack scroll-mt-28">
+            
+            <!-- Under-layer Deck Card 2 (Bottom - Fans Left) -->
+            <div class="absolute inset-0 rounded-[1.75rem] bg-zinc-950/80 border border-white/5 shadow-2xl transform -rotate-2 sm:-rotate-5 -translate-x-1 translate-y-3 opacity-40 group-hover/stack:-rotate-7 group-hover/stack:-translate-x-4 group-hover/stack:translate-y-5 group-hover/stack:opacity-75 transition-all duration-300 ease-out pointer-events-none overflow-hidden">
+              <div class="p-6 h-full flex flex-col justify-between">
+                <div class="font-mono-tech text-[10px] text-zinc-500 uppercase flex items-center justify-between">
+                  <span>SCALE_RUN // ATTRIBUTION</span>
+                  <span>[ GTM_LIVE ]</span>
+                </div>
+                <div class="font-mono-tech text-[10px] text-zinc-400">
+                  CRO FUNNEL: +340%
+                </div>
+              </div>
+            </div>
+
+            <!-- Under-layer Deck Card 1 (Middle - Fans Right) -->
+            <div class="absolute inset-0 rounded-[1.75rem] bg-zinc-900/60 border border-white/10 shadow-xl transform rotate-2 sm:rotate-4 translate-x-2 translate-y-1.5 opacity-60 group-hover/stack:rotate-6 group-hover/stack:translate-x-4 group-hover/stack:translate-y-2 group-hover/stack:opacity-90 transition-all duration-300 ease-out pointer-events-none overflow-hidden">
+              <div class="p-6 h-full flex flex-col justify-between">
+                <div class="font-mono-tech text-[10px] text-vibrant-red/80 uppercase flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-vibrant-red"></span>
+                  <span>BLENDED ROAS // 4.6X</span>
+                </div>
+                <div class="font-mono-tech text-[10px] text-zinc-400">
+                  PAID OMNICHANNEL SUITE
+                </div>
+              </div>
+            </div>
+
+            <!-- Main Top Service Card -->
+            <div class="relative z-10 glass-card p-8 flex flex-col justify-between group h-full transform group-hover/stack:-translate-y-2 transition-all duration-300 ease-out">
+              <div class="space-y-6">
+                <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                  <span class="font-mono-tech text-xs text-zinc-400 uppercase">SECTION 03</span>
+                  <span class="glass-badge font-space text-xs font-bold text-white">GROWTH</span>
+                </div>
+
+                <h3 class="font-syne font-bold text-2xl text-white uppercase group-hover:text-vibrant-red transition-colors">
+                  Digital Marketing & Growth
+                </h3>
+
+                <p class="text-zinc-300 text-sm leading-relaxed">
+                  Direct-response paid advertising campaigns, conversion rate optimization (CRO), and strategic content distribution frameworks.
+                </p>
+
+                <ul class="space-y-3 font-mono-tech text-xs text-zinc-300 pt-2">
+                  <li class="flex items-start gap-2.5">
+                    <span class="text-vibrant-red font-bold">&bull;</span>
+                    <span>Meta & TikTok Paid Ad Strategy</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <span class="text-vibrant-red font-bold">&bull;</span>
+                    <span>Conversion Rate Optimization (CRO)</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <span class="text-vibrant-red font-bold">&bull;</span>
+                    <span>Organic Content Retainers & Distribution</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <span class="text-vibrant-red font-bold">&bull;</span>
+                    <span>Analytics Tracking & Funnel Attribution</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="pt-6 mt-6 border-t border-white/10 flex flex-col gap-3">
+                <div class="flex items-center justify-between text-xs font-mono-tech">
+                  <span class="text-zinc-400">MONTHLY // PERFORMANCE</span>
+                  <span class="text-vibrant-red font-bold">ACTIVE</span>
+                </div>
+                <a 
+                  href="#contact" 
+                  data-inquiry-msg="Inquiring about Digital Marketing & Performance Growth retainers." 
+                  class="service-inquire-btn glass-btn-secondary w-full py-3.5 text-xs font-mono-tech uppercase font-bold justify-center tracking-wider"
+                >
+                  <span>INQUIRE</span>
+                  <span>&rarr;</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- SELECTED WORK (FROSTED GLASS GALLERY) -->
+    <!-- ==================================================================== -->
+    <section class="py-20 scroll-mt-28" id="work">
+      <div class="max-w-7xl mx-auto px-4 sm:px-8">
+        
+        <!-- Gallery Header & Filters -->
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+          <div>
+            <div class="font-mono-tech text-xs text-vibrant-red uppercase tracking-widest mb-2">[04] ARCHIVE</div>
+            <h2 class="font-syne font-black text-4xl sm:text-6xl text-white uppercase tracking-tight">
+              SELECTED WORK.
+            </h2>
+          </div>
+
+          <!-- Glass Filter Tabs -->
+          <div class="flex flex-wrap items-center gap-2">
+            <button data-filter="all" class="portfolio-filter-btn glass-tab active">
+              ALL
+            </button>
+            <button data-filter="visuals" class="portfolio-filter-btn glass-tab">
+              VISUALS
+            </button>
+            <button data-filter="systems" class="portfolio-filter-btn glass-tab">
+              SYSTEMS
+            </button>
+            <button data-filter="growth" class="portfolio-filter-btn glass-tab">
+              GROWTH
+            </button>
+          </div>
+        </div>
+
+        <div class="border-b border-white/10 pb-4 mb-8 flex items-center justify-between font-mono-tech text-xs text-zinc-400">
+          <span id="visibleProjectsCount">[SHOWING 6 RELEASES]</span>
+          <span>CLICK ANY ITEM FOR SPECIFICATIONS</span>
+        </div>
+
+        <!-- Work Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <!-- Entry 1: Medusa Phuket -->
+          <div data-category="visuals" class="portfolio-project-card glass-card overflow-hidden flex flex-col justify-between">
+            <div>
+              <div class="relative aspect-[4/3] w-full overflow-hidden bg-zinc-950 border-b border-white/10">
+                <img 
+                  src="assets/images/works/medusa.jpg" 
+                  alt="Medusa Phuket Visuals" 
+                  class="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 hover:scale-105 transition-all duration-500"
+                  onerror="this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop'"
+                />
+                <div class="absolute top-3 left-3 glass-badge text-[10px] font-mono-tech text-white">
+                  VISUALS
+                </div>
+              </div>
+              <div class="p-6 space-y-2">
+                <div class="text-[11px] font-mono-tech text-zinc-400">MEDUSA PHUKET &bull; 2026</div>
+                <h3 class="font-syne font-bold text-xl text-white uppercase">
+                  MEDUSA PHUKET // 4K REELS & MEDIA
+                </h3>
+                <p class="text-zinc-300 text-xs leading-relaxed">
+                  Commercial food photography, nightlife visual direction, and high-retention 4K social media reels.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <button data-project-id="proj-1" class="open-case-study glass-btn-secondary w-full py-2.5 text-xs uppercase font-space font-bold">
+                VIEW SPECIFICATIONS &rarr;
+              </button>
+            </div>
+          </div>
+
+          <!-- Entry 2: Yoon Skin -->
+          <div data-category="visuals" class="portfolio-project-card glass-card overflow-hidden flex flex-col justify-between">
+            <div>
+              <div class="relative aspect-[4/3] w-full overflow-hidden bg-zinc-950 border-b border-white/10">
+                <img 
+                  src="assets/images/works/yoonskin.jpg" 
+                  alt="Yoon Skin Aqua Shield Campaign" 
+                  class="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 hover:scale-105 transition-all duration-500"
+                  onerror="this.src='https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=800&auto=format&fit=crop'"
+                />
+                <div class="absolute top-3 left-3 glass-badge text-[10px] font-mono-tech text-white">
+                  VISUALS
+                </div>
+              </div>
+              <div class="p-6 space-y-2">
+                <div class="text-[11px] font-mono-tech text-zinc-400">YOON SKIN &bull; 2026</div>
+                <h3 class="font-syne font-bold text-xl text-white uppercase">
+                  YOON SKIN // AQUA SHIELD CAMPAIGN
+                </h3>
+                <p class="text-zinc-300 text-xs leading-relaxed">
+                  Key visual product direction, cosmetics packaging design, and multi-platform promotional poster visuals.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <button data-project-id="proj-2" class="open-case-study glass-btn-secondary w-full py-2.5 text-xs uppercase font-space font-bold">
+                VIEW SPECIFICATIONS &rarr;
+              </button>
+            </div>
+          </div>
+
+          <!-- Entry 3: Oggi Phuket -->
+          <div data-category="growth" class="portfolio-project-card glass-card overflow-hidden flex flex-col justify-between">
+            <div>
+              <div class="relative aspect-[4/3] w-full overflow-hidden bg-zinc-950 border-b border-white/10">
+                <img 
+                  src="assets/images/works/oggi.jpg" 
+                  alt="Oggi Restaurant Social Scaling" 
+                  class="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 hover:scale-105 transition-all duration-500"
+                  onerror="this.src='https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=800&auto=format&fit=crop'"
+                />
+                <div class="absolute top-3 left-3 glass-badge text-[10px] font-mono-tech text-white">
+                  GROWTH
+                </div>
+              </div>
+              <div class="p-6 space-y-2">
+                <div class="text-[11px] font-mono-tech text-zinc-400">OGGI PHUKET &bull; 2026</div>
+                <h3 class="font-syne font-bold text-xl text-white uppercase">
+                  OGGI RESTAURANT // SOCIAL SCALING
+                </h3>
+                <p class="text-zinc-300 text-xs leading-relaxed">
+                  End-to-end social media growth, culinary content retainers, and customer engagement strategy.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <button data-project-id="proj-3" class="open-case-study glass-btn-secondary w-full py-2.5 text-xs uppercase font-space font-bold">
+                VIEW SPECIFICATIONS &rarr;
+              </button>
+            </div>
+          </div>
+
+          <!-- Entry 4: Patong Festival -->
+          <div data-category="visuals" class="portfolio-project-card glass-card overflow-hidden flex flex-col justify-between">
+            <div>
+              <div class="relative aspect-[4/3] w-full overflow-hidden bg-zinc-950 border-b border-white/10">
+                <img 
+                  src="assets/images/works/patong.jpg" 
+                  alt="Patong Festival 2025 Live Stage" 
+                  class="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 hover:scale-105 transition-all duration-500"
+                  onerror="this.src='https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=800&auto=format&fit=crop'"
+                />
+                <div class="absolute top-3 left-3 glass-badge text-[10px] font-mono-tech text-white">
+                  VISUALS
+                </div>
+              </div>
+              <div class="p-6 space-y-2">
+                <div class="text-[11px] font-mono-tech text-zinc-400">PATONG BEACH FESTIVAL &bull; 2025</div>
+                <h3 class="font-syne font-bold text-xl text-white uppercase">
+                  PATONG FESTIVAL // LIVE STAGE & CROWD
+                </h3>
+                <p class="text-zinc-300 text-xs leading-relaxed">
+                  High-energy concert photography, low-light stage visual coverage, and festival crowd documentation.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <button data-project-id="proj-4" class="open-case-study glass-btn-secondary w-full py-2.5 text-xs uppercase font-space font-bold">
+                VIEW SPECIFICATIONS &rarr;
+              </button>
+            </div>
+          </div>
+
+          <!-- Entry 5: Internal Restaurant OS -->
+          <div data-category="systems" class="portfolio-project-card glass-card overflow-hidden flex flex-col justify-between">
+            <div>
+              <div class="relative aspect-[4/3] w-full overflow-hidden bg-zinc-950 border-b border-white/10">
+                <img 
+                  src="assets/images/works/system.jpg" 
+                  alt="Restaurant OS Inventory & DB" 
+                  class="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 hover:scale-105 transition-all duration-500"
+                  onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop'"
+                />
+                <div class="absolute top-3 left-3 glass-badge text-[10px] font-mono-tech text-white">
+                  SYSTEMS
+                </div>
+              </div>
+              <div class="p-6 space-y-2">
+                <div class="text-[11px] font-mono-tech text-zinc-400">INTERNAL SYSTEM &bull; 2026</div>
+                <h3 class="font-syne font-bold text-xl text-white uppercase">
+                  RESTAURANT OS // INVENTORY & DB
+                </h3>
+                <p class="text-zinc-300 text-xs leading-relaxed">
+                  Custom multi-branch management web application with normalized MySQL database and real-time tracking.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <button data-project-id="proj-5" class="open-case-study glass-btn-secondary w-full py-2.5 text-xs uppercase font-space font-bold">
+                VIEW SPECIFICATIONS &rarr;
+              </button>
+            </div>
+          </div>
+
+          <!-- Entry 6: Nike In Town Ad Concept -->
+          <div data-category="growth" class="portfolio-project-card glass-card overflow-hidden flex flex-col justify-between">
+            <div>
+              <div class="relative aspect-[4/3] w-full overflow-hidden bg-zinc-950 border-b border-white/10">
+                <img 
+                  src="assets/images/works/nike.jpg" 
+                  alt="Nike In Town Ad Concept" 
+                  class="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 hover:scale-105 transition-all duration-500"
+                  onerror="this.src='https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop'"
+                />
+                <div class="absolute top-3 left-3 glass-badge text-[10px] font-mono-tech text-white">
+                  GROWTH
+                </div>
+              </div>
+              <div class="p-6 space-y-2">
+                <div class="text-[11px] font-mono-tech text-zinc-400">RETAIL CONCEPT &bull; 2026</div>
+                <h3 class="font-syne font-bold text-xl text-white uppercase">
+                  NIKE // "NIKE IN TOWN" AD CONCEPT
+                </h3>
+                <p class="text-zinc-300 text-xs leading-relaxed">
+                  Retail promotional visual direction, dynamic streetwear poster concept, and local store ad design.
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <button data-project-id="proj-6" class="open-case-study glass-btn-secondary w-full py-2.5 text-xs uppercase font-space font-bold">
+                VIEW SPECIFICATIONS &rarr;
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- PROFILE & ARSENAL (FROSTED GLASS CONTAINER) -->
+    <!-- ==================================================================== -->
+    <section class="py-20 scroll-mt-28" id="profile">
+      <div class="max-w-7xl mx-auto px-4 sm:px-8">
+        
+        <div class="glass-hero-card p-8 sm:p-14">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-6 space-y-6">
+              <div class="font-mono-tech text-xs text-vibrant-red uppercase tracking-widest">[05] PROFILE</div>
+              <h2 class="font-syne font-black text-3xl sm:text-5xl text-white uppercase tracking-tight">
+                DISCIPLINE &bull; CODE &bull; IMAGE.
+              </h2>
+              <p class="text-zinc-300 text-base leading-relaxed">
+                Saihan leads end-to-end commercial visual direction backed by a dedicated in-house engineering and development team. From brand visuals to complex enterprise web systems, we deliver complete creative and technical execution under one unified vision.
+              </p>
+              <div class="border-l-2 border-vibrant-red pl-6 py-2 text-sm text-zinc-200 font-space">
+                "Zero translation loss between the visual director, the engineering team, and the media buyer."
+              </div>
+            </div>
+
+            <div class="lg:col-span-6">
+              <div class="glass-card p-6 sm:p-8 space-y-6">
+                <div class="font-mono-tech text-xs text-zinc-300 uppercase border-b border-white/10 pb-3">
+                  EQUIPMENT & TECHNICAL TOOLING
+                </div>
+                
+                <div class="space-y-4 text-xs font-mono-tech">
+                  <div>
+                    <div class="text-zinc-500 uppercase">CREATIVE SUITE</div>
+                    <div class="text-white mt-1">Lightroom Classic &bull; Photoshop &bull; Premiere Pro &bull; CapCut &bull; Studio Lighting & Retouching</div>
+                  </div>
+                  <div>
+                    <div class="text-zinc-500 uppercase">ENGINEERING & INFRASTRUCTURE</div>
+                    <div class="text-white mt-1">Full-Stack Team Capabilities &bull; Custom Web Apps &bull; Enterprise Databases &bull; MySQL & Cloud Deployments</div>
+                  </div>
+                  <div>
+                    <div class="text-zinc-500 uppercase">GROWTH & DISTRIBUTION</div>
+                    <div class="text-white mt-1">Meta Business Suite &bull; TikTok Ads &bull; Feed Curation & Paid Campaigns</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- CONTACT SECTION (FROSTED GLASS FORM) -->
+    <!-- ==================================================================== -->
+    <section class="py-20 scroll-mt-28" id="contact">
+      <div class="max-w-4xl mx-auto px-4 sm:px-8">
+        
+        <div class="mb-10 text-center md:text-left">
+          <div class="font-mono-tech text-xs text-vibrant-red uppercase tracking-widest mb-2">[06] INQUIRIES</div>
+          <h2 class="font-syne font-black text-4xl sm:text-6xl text-white uppercase tracking-tight">
+            START A PROJECT.
+          </h2>
+          <p class="text-zinc-400 font-space text-xs sm:text-sm mt-2">
+            Reach out directly via instant messaging or send a quick brief below. We reply within 24 hours.
+          </p>
+        </div>
+
+        <!-- Direct Instant Chat Action Bar -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+          
+          <!-- Direct WhatsApp Button -->
+          <a 
+            href="https://wa.me/?text=Hi%20Saihan,%20I'd%20like%20to%20discuss%20a%20project." 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="liquid-action-card p-5 flex items-center justify-between hover:border-emerald-500/60 hover:bg-emerald-950/25 transition-all group"
+          >
+            <div class="flex items-center gap-3.5">
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center border border-emerald-500/40 shadow-lg group-hover:scale-110 transition-transform">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="font-space text-xs font-bold text-white uppercase flex items-center gap-2">
+                  <span>DIRECT WHATSAPP</span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                </div>
+                <div class="font-mono-tech text-[10px] text-zinc-400">Instant Direct Chat &bull; Online</div>
+              </div>
+            </div>
+            <span class="text-emerald-400 font-mono-tech text-xs group-hover:translate-x-1 transition-transform font-bold">&rarr;</span>
+          </a>
+
+          <!-- Telegram / Direct Email Button -->
+          <a 
+            href="mailto:hello@saihan.com?subject=Project%20Inquiry%20-%20Saihan" 
+            class="liquid-action-card p-5 flex items-center justify-between hover:border-vibrant-red/60 hover:bg-red-950/25 transition-all group"
+          >
+            <div class="flex items-center gap-3.5">
+              <div class="w-10 h-10 rounded-xl bg-vibrant-red/20 text-vibrant-red flex items-center justify-center border border-vibrant-red/40 shadow-lg group-hover:scale-110 transition-transform">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <div class="font-space text-xs font-bold text-white uppercase flex items-center gap-2">
+                  <span>TELEGRAM / DIRECT EMAIL</span>
+                </div>
+                <div class="font-mono-tech text-[10px] text-zinc-400">hello@saihan.com</div>
+              </div>
+            </div>
+            <span class="text-vibrant-red font-mono-tech text-xs group-hover:translate-x-1 transition-transform font-bold">&rarr;</span>
+          </a>
+
+        </div>
+
+        <div class="glass-hero-card p-8 sm:p-12">
+          
+          <form id="contactForm" class="space-y-6" novalidate>
+            
+            <!-- Anti-spam Honeypot -->
+            <div class="hidden" aria-hidden="true">
+              <label for="website_trap">Leave blank</label>
+              <input type="text" id="website_trap" name="website_trap" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <!-- Field 1: Name / Brand -->
+            <div class="space-y-2">
+              <label class="block font-space text-xs font-bold uppercase text-zinc-300" for="name">
+                YOUR NAME / BRAND *
+              </label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                required 
+                placeholder="e.g. Akira Sato / Tokyo Studio" 
+                class="glass-input w-full px-5 py-4 text-sm"
+              />
+            </div>
+
+            <!-- Field 2: WhatsApp Number or Email -->
+            <div class="space-y-2">
+              <label class="block font-space text-xs font-bold uppercase text-zinc-300" for="contact_info">
+                WHATSAPP NUMBER OR EMAIL *
+              </label>
+              <input 
+                type="text" 
+                id="contact_info" 
+                name="contact_info" 
+                required 
+                placeholder="+66 ... or hello@brand.com" 
+                class="glass-input w-full px-5 py-4 text-sm"
+              />
+            </div>
+
+            <!-- Field 3: Quick Message -->
+            <div class="space-y-2">
+              <label class="block font-space text-xs font-bold uppercase text-zinc-300" for="message">
+                HOW CAN WE HELP? (QUICK MESSAGE) *
+              </label>
+              <textarea 
+                id="message" 
+                name="message" 
+                rows="4" 
+                required 
+                placeholder="Tell us about your project, goals, or timeline..." 
+                class="glass-input w-full px-5 py-4 text-sm resize-y"
+              ></textarea>
+            </div>
+
+            <!-- Submit Button (Realistic Liquid Glass Pill) -->
+            <div class="pt-2">
+              <button 
+                type="submit" 
+                id="submitBtn" 
+                class="glass-btn-primary w-full py-4 text-sm tracking-wider font-space font-bold uppercase"
+              >
+                SUBMIT INQUIRY &rarr;
+              </button>
+            </div>
+
+            <!-- Live Alert Box -->
+            <div id="formAlert" class="mt-6 p-4 text-xs font-mono-tech rounded-2xl border hidden" role="alert"></div>
+
+            <div class="flex items-center justify-between text-[11px] font-mono-tech text-zinc-400 pt-2">
+              <span>SECURE TRANSMISSION // DIRECT INBOX</span>
+              <span>24H RESPONSE TIME</span>
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ====================================================================== -->
+  <!-- CASE STUDY MODAL (FROSTED GLASS) -->
+  <!-- ====================================================================== -->
+  <div id="caseStudyModal" class="fixed inset-0 z-50 hidden glass-modal-backdrop flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+    <div class="glass-hero-card max-w-3xl w-full my-8 relative text-white">
+      
+      <div class="p-6 sm:p-10 space-y-6">
+        
+        <div class="flex items-center justify-between border-b border-white/10 pb-4">
+          <div class="flex items-center gap-3 text-xs font-mono-tech">
+            <span id="modalPillar" class="glass-badge font-bold uppercase text-white">CATEGORY</span>
+            <span id="modalYear" class="text-zinc-400">2025</span>
+          </div>
+          <button id="closeModalBtn" aria-label="Close" class="text-xs font-mono-tech text-zinc-400 hover:text-white uppercase p-1">
+            [CLOSE ✖]
+          </button>
+        </div>
+
+        <div>
+          <div class="text-xs font-mono-tech text-zinc-400 uppercase" id="modalClient">CLIENT NAME</div>
+          <h3 class="font-syne font-black text-2xl sm:text-3xl text-white uppercase mt-1" id="modalTitle">
+            PROJECT TITLE
+          </h3>
+        </div>
+
+        <div class="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-950">
+          <img id="modalImage" src="" alt="Case Study Cover" class="w-full h-full object-cover grayscale contrast-125" />
+        </div>
+
+        <div class="space-y-2">
+          <div class="font-mono-tech text-xs text-vibrant-red uppercase">PROJECT OVERVIEW</div>
+          <p class="text-zinc-300 text-sm leading-relaxed" id="modalOverview"></p>
+        </div>
+
+        <div class="space-y-2">
+          <div class="font-mono-tech text-xs text-vibrant-red uppercase">DELIVERABLES & SCOPE</div>
+          <ul class="space-y-1.5 text-xs font-mono-tech text-zinc-300" id="modalDeliverables"></ul>
+        </div>
+
+        <div class="space-y-2">
+          <div class="font-mono-tech text-xs text-vibrant-red uppercase">TECHNICAL & HARDWARE DEPLOYED</div>
+          <div class="flex flex-wrap gap-2" id="modalTools"></div>
+        </div>
+
+        <div class="glass-card p-4 font-mono-tech text-xs space-y-1">
+          <div class="text-zinc-400 uppercase">VERIFIED IMPACT:</div>
+          <div class="font-bold text-sm text-vibrant-red" id="modalImpact"></div>
+        </div>
+
+        <div class="pt-4 flex items-center justify-between border-t border-white/10">
+          <span class="text-xs font-mono-tech text-zinc-400">READY FOR SIMILAR PRODUCTION?</span>
+          <a href="#contact" onclick="document.getElementById('caseStudyModal').classList.add('hidden'); document.body.style.overflow='';" class="glass-btn-primary px-5 py-2 text-xs font-bold uppercase">
+            START BRIEF &rarr;
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================== -->
+  <!-- FOOTER -->
+  <!-- ====================================================================== -->
+  <footer class="glass-navbar border-t border-white/10 py-12 font-mono-tech text-xs text-zinc-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 space-y-8">
+      
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        
+        <div>
+          <div class="font-syne font-black text-xl text-white uppercase">
+            SAIHAN<span class="text-vibrant-red">.</span>
+          </div>
+          <p class="text-zinc-400 text-[11px] mt-1">
+            Commercial Photography &bull; Full-Stack Systems &bull; Performance Growth
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-6 font-bold text-zinc-300 uppercase">
+          <a href="#visuals" class="hover:text-white transition-colors">VISUALS</a>
+          <a href="#systems" class="hover:text-white transition-colors">SYSTEMS</a>
+          <a href="#growth" class="hover:text-white transition-colors">GROWTH</a>
+          <a href="#work" class="hover:text-white transition-colors">ARCHIVE</a>
+          <a href="#contact" class="hover:text-white transition-colors">CONTACT</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-white uppercase">IG</a>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="hover:text-white uppercase">GH</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:text-white uppercase">IN</a>
+          <a href="https://behance.net" target="_blank" rel="noopener noreferrer" class="hover:text-white uppercase">BE</a>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-zinc-500 text-[11px]">
+        <div>
+          &copy; 2026 SAIHAN. ALL RIGHTS RESERVED.
+        </div>
+        <a href="#" class="hover:text-white transition-colors">
+          BACK TO TOP [&uarr;]
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Interaction Script -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

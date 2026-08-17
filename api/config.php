@@ -32,7 +32,8 @@ define('DB_CHARSET', 'utf8mb4');
 // 2. LEAD NOTIFICATION EMAIL SETTINGS (OPTIONAL)
 // ============================================================================
 // Set to your personal email to receive instant alerts when a lead submits the form
-define('ADMIN_EMAIL', 'hello@yourdomain.com');
+define('ADMIN_EMAIL', 'khainghtoar2000@gmail.com');
+define('SITE_DOMAIN', 'shootonstrangers.eu');
 define('ENABLE_EMAIL_ALERTS', false); // Set to true once mail server is configured
 
 // ============================================================================

@@ -707,7 +707,7 @@ function initEmailCopy() {
 
   copyBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      const email = btn.getAttribute('data-email') || 'hello@saihan.com';
+      const email = btn.getAttribute('data-email') || 'khainghtoar2000@gmail.com';
       
       navigator.clipboard.writeText(email).then(() => {
         const originalText = btn.innerHTML;

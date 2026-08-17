@@ -20,15 +20,32 @@
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:alt" content="Saihan — Visuals, Systems, Growth" />
 
-  <!-- Twitter / X Cards -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Saihan — Visuals, Systems, Growth" />
-  <meta name="twitter:description" content="Commercial Photography, Full-Stack Web Development, and Performance Growth." />
-  <meta name="twitter:image" content="https://shootonstrangers.eu/assets/images/og-preview.jpg" />
-  
-  <link rel="image_src" href="https://shootonstrangers.eu/assets/images/og-preview.jpg" />
+  <!-- Tailwind CSS CDN Engine -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'deep-black': '#070709',
+            'glass-surface': 'rgba(18, 18, 24, 0.55)',
+            'vibrant-red': '#ff2a3a',
+            'crimson-red': '#d90429',
+            'off-white': '#f4f4f0'
+          },
+          fontFamily: {
+            'syne': ['Syne', 'sans-serif'],
+            'space': ['Space Grotesk', 'sans-serif'],
+            'mono-tech': ['JetBrains Mono', 'monospace'],
+            'inter': ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
 
-  <!-- Compiled Local Tailwind CSS & Glassmorphic Stylesheet -->
+  <!-- Compiled Local Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body class="bg-deep-black text-off-white min-h-screen flex flex-col antialiased selection:bg-vibrant-red selection:text-white relative">
@@ -111,7 +128,7 @@
     </div>
 
     <!-- Mobile Drawer -->
-    <div id="mobileMenu" class="hidden md:hidden bg-zinc-950/95 backdrop-blur-2xl border-b border-white/10 px-6 py-6 font-space text-xs uppercase space-y-4">
+    <div id="mobileMenu" class="hidden md:hidden bg-zinc-950/95 backdrop-blur-2xl border-b border-white/10 px-6 py-6 font-space text-xs uppercase space-y-4" style="display: none;">
       <a href="#visuals" class="mobile-nav-link block py-2 border-b border-white/10 text-zinc-300">
         VISUALS // COMMERCIAL PHOTOGRAPHY
       </a>
@@ -892,7 +909,7 @@
           <form id="contactForm" class="space-y-6" novalidate>
             
             <!-- Anti-spam Honeypot -->
-            <div class="hidden" aria-hidden="true">
+            <div class="hidden" style="display: none !important;" aria-hidden="true">
               <label for="website_trap">Leave blank</label>
               <input type="text" id="website_trap" name="website_trap" tabindex="-1" autocomplete="off" />
             </div>
@@ -972,7 +989,7 @@
   <!-- ====================================================================== -->
   <!-- CASE STUDY MODAL (FROSTED GLASS) -->
   <!-- ====================================================================== -->
-  <div id="caseStudyModal" class="fixed inset-0 z-50 hidden glass-modal-backdrop flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+  <div id="caseStudyModal" class="fixed inset-0 z-50 hidden glass-modal-backdrop items-center justify-center p-4 sm:p-6 overflow-y-auto" style="display: none;">
     <div class="glass-hero-card max-w-3xl w-full my-8 relative text-white">
       
       <div class="p-6 sm:p-10 space-y-6">

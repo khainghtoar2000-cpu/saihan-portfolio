@@ -245,8 +245,9 @@ function initMobileNav() {
   if (!menuBtn || !mobileMenu) return;
 
   menuBtn.addEventListener('click', () => {
-    const isHidden = mobileMenu.classList.contains('hidden');
+    const isHidden = mobileMenu.classList.contains('hidden') || mobileMenu.style.display === 'none';
     if (isHidden) {
+      mobileMenu.style.display = 'block';
       mobileMenu.classList.remove('hidden');
       menuBtn.setAttribute('aria-expanded', 'true');
       menuBtn.innerHTML = `
@@ -255,6 +256,7 @@ function initMobileNav() {
         </svg>
       `;
     } else {
+      mobileMenu.style.display = 'none';
       mobileMenu.classList.add('hidden');
       menuBtn.setAttribute('aria-expanded', 'false');
       menuBtn.innerHTML = `
@@ -267,6 +269,7 @@ function initMobileNav() {
 
   menuLinks.forEach(link => {
     link.addEventListener('click', () => {
+      mobileMenu.style.display = 'none';
       mobileMenu.classList.add('hidden');
       menuBtn.setAttribute('aria-expanded', 'false');
       menuBtn.innerHTML = `
@@ -452,11 +455,13 @@ function initCaseStudyModal() {
         .join('');
     }
 
+    modal.style.display = 'flex';
     modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
   };
 
   const closeModal = () => {
+    modal.style.display = 'none';
     modal.classList.add('hidden');
     document.body.style.overflow = '';
   };
@@ -630,7 +635,8 @@ function initSmoothScroll() {
         // Close mobile drawer if open
         const mobileMenu = document.getElementById('mobileMenu');
         const menuBtn = document.getElementById('mobileMenuBtn');
-        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        if (mobileMenu && (!mobileMenu.classList.contains('hidden') || mobileMenu.style.display !== 'none')) {
+          mobileMenu.style.display = 'none';
           mobileMenu.classList.add('hidden');
           if (menuBtn) {
             menuBtn.setAttribute('aria-expanded', 'false');

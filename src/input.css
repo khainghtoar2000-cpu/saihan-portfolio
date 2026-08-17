@@ -11,6 +11,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.hidden, [hidden] {
+  display: none !important;
+}
+
 :root {
   --bg-deep: #070709;
   --glass-bg: rgba(18, 18, 24, 0.52);

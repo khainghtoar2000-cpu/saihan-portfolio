@@ -395,17 +395,17 @@ const PROJECT_DATABASE = {
     impact: 'Automated daily inventory reconciliations and eliminated 98% of stock discrepancy errors across branches.'
   },
   'proj-6': {
-    title: 'NIKE // "NIKE IN TOWN" AD CONCEPT',
-    category: 'Growth & Retail Concept',
-    pillar: 'Growth',
-    client: 'Retail Store Concept',
-    year: '2026',
-    coverImage: 'assets/images/works/nike.jpg',
-    fallbackImage: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1200&auto=format&fit=crop',
-    overview: 'Retail promotional visual direction, dynamic streetwear poster concept, and local store ad design.',
-    deliverables: ['Retail Showcase Poster', 'Urban Street Typography Layout', 'Store Display Creatives', 'Social Promo Assets'],
-    tools: ['Adobe Photoshop', 'Illustrator', 'Figma', 'Camera Raw'],
-    impact: 'Created high-contrast urban visual concept tailored for local streetwear retail store promotions.'
+    title: 'URBAN APPAREL // SUNGLASSES',
+    category: 'Commercial & Fashion',
+    pillar: 'Visuals',
+    client: 'Urban Apparel Brand',
+    year: '2020',
+    coverImage: 'assets/images/works/urban_apparel.jpg',
+    fallbackImage: 'assets/images/works/urban_apparel.jpg',
+    overview: 'High-contrast commercial lookbook shoot focusing on modern streetwear aesthetic, urban automotive framing, and premium lifestyle branding.',
+    deliverables: ['Commercial Lookbook Photography', 'Urban Fashion & Sunglasses Campaign', 'Automotive Framing & Location Direction', 'High-End Retouching'],
+    tools: ['Sony Full-Frame', '85mm f/1.4 Prime', 'Capture One Pro', 'Lightroom'],
+    impact: 'Produced hero visual campaign assets for seasonal apparel release and brand lookbook.'
   },
   'proj-7': {
     title: '35MM STREET // ANALOG ARCHIVE',

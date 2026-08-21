@@ -1485,8 +1485,13 @@
             <span id="modalPillar" class="glass-badge font-bold uppercase text-white">CATEGORY</span>
             <span id="modalYear" class="text-zinc-400">2025</span>
           </div>
-          <button id="closeModalBtn" aria-label="Close" class="text-xs font-mono-tech text-zinc-400 hover:text-white uppercase p-1">
-            [CLOSE ✖]
+          <button 
+            id="closeModalBtn" 
+            aria-label="Close Case Study Modal" 
+            class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-mono-tech text-zinc-300 hover:text-white hover:bg-vibrant-red/20 hover:border-vibrant-red/50 transition-all uppercase cursor-pointer"
+          >
+            <span>CLOSE</span>
+            <span class="text-vibrant-red font-bold font-mono-tech">✕</span>
           </button>
         </div>
 
@@ -1523,8 +1528,13 @@
 
         <div class="pt-4 flex items-center justify-between border-t border-white/10">
           <span class="text-xs font-mono-tech text-zinc-400">READY FOR SIMILAR PRODUCTION?</span>
-          <a href="#contact" onclick="document.getElementById('caseStudyModal').classList.add('hidden'); document.body.style.overflow='';" class="glass-btn-primary px-5 py-2 text-xs font-bold uppercase">
-            START BRIEF &rarr;
+          <a 
+            href="#contact" 
+            id="modalStartBriefBtn" 
+            class="glass-btn-primary px-5 py-2 text-xs font-bold uppercase tracking-wider"
+          >
+            <span>START BRIEF</span>
+            <span>&rarr;</span>
           </a>
         </div>
 

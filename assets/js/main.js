@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initInquiryRouting();
   initEmailCopy();
   initVisualsAccordion();
+  initFloatingScrollNav();
 });
 
 // ============================================================================
@@ -728,6 +729,65 @@ function initVisualsAccordion() {
         if (e.target.closest('a, button')) return;
         e.preventDefault();
         setActivePanel(panel);
+      }
+    });
+  });
+}
+
+// ============================================================================
+// 11. FLOATING RIGHT-SIDE VERTICAL SCROLL NAVIGATION & SCROLLSPY
+// ============================================================================
+function initFloatingScrollNav() {
+  const nav = document.getElementById('floatingScrollNav');
+  if (!nav) return;
+
+  const links = nav.querySelectorAll('.scroll-nav-link');
+  if (!links.length) return;
+
+  const sectionIds = ['hero', 'visuals', 'systems', 'growth', 'work', 'vault', 'contact'];
+  const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+  const updateActive = () => {
+    const scrollPos = window.scrollY + window.innerHeight * 0.35;
+
+    let currentSectionId = 'hero';
+    sections.forEach(sec => {
+      const top = sec.offsetTop;
+      if (scrollPos >= top) {
+        currentSectionId = sec.id;
+      }
+    });
+
+    links.forEach(link => {
+      const target = link.getAttribute('data-target');
+      if (target === currentSectionId) {
+        link.classList.add('bg-white', 'text-black', 'shadow-lg', 'scale-110');
+        link.classList.remove('text-zinc-400', 'hover:bg-white/10');
+        const svg = link.querySelector('svg');
+        if (svg && !svg.classList.contains('text-vibrant-red')) {
+          svg.classList.add('text-black');
+        }
+      } else {
+        link.classList.remove('bg-white', 'text-black', 'shadow-lg', 'scale-110');
+        link.classList.add('text-zinc-400', 'hover:bg-white/10');
+        const svg = link.querySelector('svg');
+        if (svg && !svg.classList.contains('text-vibrant-red')) {
+          svg.classList.remove('text-black');
+        }
+      }
+    });
+  };
+
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+
+  links.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('data-target');
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: 'smooth' });
       }
     });
   });

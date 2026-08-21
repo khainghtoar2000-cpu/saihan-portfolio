@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initInquiryRouting();
   initEmailCopy();
+  initVisualsAccordion();
 });
 
 // ============================================================================
@@ -405,6 +406,19 @@ const PROJECT_DATABASE = {
     deliverables: ['Retail Showcase Poster', 'Urban Street Typography Layout', 'Store Display Creatives', 'Social Promo Assets'],
     tools: ['Adobe Photoshop', 'Illustrator', 'Figma', 'Camera Raw'],
     impact: 'Created high-contrast urban visual concept tailored for local streetwear retail store promotions.'
+  },
+  'proj-7': {
+    title: '35MM STREET // ANALOG ARCHIVE',
+    category: 'Visuals & Street',
+    pillar: 'Visuals',
+    client: 'Independent Series',
+    year: '2025',
+    coverImage: 'assets/images/works/memories.jpg',
+    fallbackImage: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1200&auto=format&fit=crop',
+    overview: 'Documentary street photography, low-light night captures, and raw 35mm grain aesthetics.',
+    deliverables: ['Documentary Street Prints', 'Editorial Street Layouts', 'Film Tone Emulation', 'Visual Storytelling'],
+    tools: ['Leica M / 35mm Prime', 'Kodak Portra 400', 'Capture One Pro', 'Lightroom'],
+    impact: 'Curated independent documentary street photography collection published across visual features.'
   }
 };
 
@@ -724,6 +738,35 @@ function initEmailCopy() {
       }).catch(() => {
         prompt('Email address:', email);
       });
+    });
+  });
+}
+
+// ============================================================================
+// 10. FEY-STYLE EXPANDABLE ACCORDION ENGINE (IMAGE 1 REF)
+// ============================================================================
+function initVisualsAccordion() {
+  const panels = document.querySelectorAll('.accordion-panel');
+  if (!panels.length) return;
+
+  panels.forEach((panel) => {
+    // Click / touch to activate & expand panel
+    panel.addEventListener('click', (e) => {
+      // If user clicked an anchor or button inside the expanded card, don't interfere
+      if (e.target.closest('a, button')) return;
+
+      panels.forEach(p => p.classList.remove('is-active'));
+      panel.classList.add('is-active');
+    });
+
+    // Keyboard accessibility
+    panel.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        if (e.target.closest('a, button')) return;
+        e.preventDefault();
+        panels.forEach(p => p.classList.remove('is-active'));
+        panel.classList.add('is-active');
+      }
     });
   });
 }

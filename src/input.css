@@ -574,3 +574,105 @@ header, main, footer, section {
 #heroPortraitCanvas {
   touch-action: none;
 }
+
+/* ==========================================================================
+   5. FEY-STYLE EXPANDABLE HORIZONTAL ACCORDION (IMAGE 1 REF)
+   ========================================================================== */
+.accordion-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .accordion-wrapper {
+    flex-direction: row;
+    align-items: stretch;
+    height: 560px;
+    gap: 0.85rem;
+  }
+}
+
+.accordion-panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  background: rgba(14, 14, 18, 0.65);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.18);
+  transition: all 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.accordion-panel:hover {
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 24px 48px -8px rgba(0, 0, 0, 0.85), inset 0 1px 1.5px rgba(255, 255, 255, 0.28);
+}
+
+/* Desktop Collapsed & Expanded states */
+@media (min-width: 768px) {
+  .accordion-panel {
+    flex: 1;
+    min-width: 68px;
+    max-width: 90px;
+    height: 100%;
+  }
+
+  .accordion-panel.is-active {
+    flex: 4;
+    min-width: 380px;
+    max-width: none;
+    cursor: default;
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 42, 58, 0.12), inset 0 1px 2px rgba(255, 255, 255, 0.35);
+  }
+}
+
+/* Mobile Collapsed & Expanded states */
+@media (max-width: 767px) {
+  .accordion-panel {
+    width: 100%;
+    min-height: 72px;
+  }
+
+  .accordion-panel.is-active {
+    min-height: 480px;
+    cursor: default;
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* Vertical text styling for collapsed desktop state */
+.vertical-panel-title {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;
+  letter-spacing: 0.08em;
+}
+
+/* Panel Content visibility transitions */
+.panel-expanded-content {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity 0.35s ease 0.12s, transform 0.35s ease 0.12s;
+}
+
+.accordion-panel.is-active .panel-expanded-content {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.panel-collapsed-label {
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+.accordion-panel.is-active .panel-collapsed-label {
+  opacity: 0;
+  pointer-events: none;
+}

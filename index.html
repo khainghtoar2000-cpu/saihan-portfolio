@@ -85,6 +85,28 @@
 <body class="bg-deep-black text-off-white min-h-screen flex flex-col antialiased selection:bg-vibrant-red selection:text-white relative">
 
   <!-- ====================================================================== -->
+  <!-- HIGH-PERFORMANCE AMBIENT VIDEO BACKGROUND (MOTIONSITES MP4) -->
+  <!-- ====================================================================== -->
+  <div class="fixed inset-0 z-[-2] overflow-hidden pointer-events-none" aria-hidden="true">
+    <video 
+      id="bgVideo"
+      autoplay 
+      loop 
+      muted 
+      playsinline 
+      preload="auto"
+      class="w-full h-full object-cover opacity-40 filter brightness-95 contrast-110"
+      poster="assets/images/works/medusa.jpg"
+    >
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260808_112712_da9d53df-6d27-4b12-bdf6-aa9dc2622bdf.mp4" type="video/mp4">
+    </video>
+    <!-- Dark Glass Contrast & Vignette Overlays -->
+    <div class="absolute inset-0 bg-deep-black/60"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/85 via-transparent to-black/90"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.75)_100%)]"></div>
+  </div>
+
+  <!-- ====================================================================== -->
   <!-- AMBIENT CORNER RADIAL GRADIENT SPHERES & PARTICLE TERRAIN (IMAGE 2 REF) -->
   <!-- ====================================================================== -->
   <div class="radial-circles-background" aria-hidden="true">

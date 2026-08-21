@@ -343,17 +343,17 @@ const PROJECT_DATABASE = {
     impact: 'Drove over 1.8M organic views across Instagram Reels with a notable surge in weekend bookings.'
   },
   'proj-2': {
-    title: 'YOON SKIN // AQUA SHIELD CAMPAIGN',
-    category: 'Visuals & Branding',
+    title: 'GOLDEN HOUR COMPANION',
+    category: 'Editorial & Lifestyle',
     pillar: 'Visuals',
-    client: 'Yoon Skin',
-    year: '2026',
-    coverImage: 'assets/images/works/yoonskin.jpg',
-    fallbackImage: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=1200&auto=format&fit=crop',
-    overview: 'Key visual product direction, cosmetics packaging design, and multi-platform promotional poster visuals.',
-    deliverables: ['Key Visual Master Layouts', 'Cosmetics Packaging Design', 'E-Commerce Hero Assets', 'Ad Creatives'],
-    tools: ['Sony A7SIII', 'Macro 90mm GM', 'Adobe Photoshop', 'Illustrator'],
-    impact: 'Hero campaign drove a 420% increase in product pre-orders within the first 14 days of launch.'
+    client: 'Lifestyle Archive',
+    year: '2019',
+    coverImage: 'assets/images/works/golden_hour.jpg',
+    fallbackImage: 'assets/images/works/golden_hour.jpg',
+    overview: 'Outdoor lifestyle and motion capture featuring natural golden-hour lighting, candid emotion, and dynamic water splash action.',
+    deliverables: ['Outdoor Lifestyle Photography', 'Action & Water Motion Capture', 'Golden Hour Color Grading', 'Candid Portrait Retouching'],
+    tools: ['Sony Full-Frame', '70-200mm f/2.8 GM', 'Capture One Pro', 'Lightroom'],
+    impact: 'Captured iconic natural golden-hour lifestyle sequence featured across editorial publications.'
   },
   'proj-3': {
     title: 'OGGI RESTAURANT // SOCIAL SCALING',

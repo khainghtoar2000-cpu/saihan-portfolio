@@ -1576,7 +1576,102 @@
     </div>
   </footer>
 
-  <!-- Interaction Script -->
-  <script src="assets/js/main.js"></script>
+  <!-- Main Portfolio Engine (Cache-Busted) -->
+  <script src="assets/js/main.js?v=2.1"></script>
+
+  <!-- Inline Fey-Style Expandable Accordion Engine -->
+  <script>
+    (function () {
+      function initAccordion() {
+        const accordion = document.getElementById('feyAccordion');
+        if (!accordion) return;
+
+        const panels = accordion.querySelectorAll('.fey-panel');
+        if (!panels.length) return;
+
+        function setFocus(activePanel) {
+          const isDesktop = window.innerWidth >= 768;
+
+          panels.forEach((p) => {
+            const isMatch = (p === activePanel);
+            const expanded = p.querySelector('.fey-expanded-view');
+            const collapsed = p.querySelector('.fey-collapsed-view');
+
+            if (isMatch) {
+              p.classList.add('is-active');
+              p.style.flex = isDesktop ? '5 1 0%' : '1 1 auto';
+              p.style.maxWidth = '100%';
+              p.style.minWidth = isDesktop ? '340px' : '100%';
+              p.style.minHeight = isDesktop ? '100%' : '480px';
+              p.style.maxHeight = 'none';
+              p.style.borderColor = 'rgba(255, 255, 255, 0.35)';
+              p.style.backgroundColor = 'rgba(24, 24, 27, 0.9)';
+              p.style.cursor = 'default';
+
+              if (expanded) {
+                expanded.style.display = 'flex';
+              }
+              if (collapsed) {
+                collapsed.style.display = 'none';
+              }
+            } else {
+              p.classList.remove('is-active');
+              p.style.flex = isDesktop ? '1 1 0%' : '0 0 auto';
+              p.style.maxWidth = isDesktop ? '85px' : '100%';
+              p.style.minWidth = isDesktop ? '60px' : '100%';
+              p.style.minHeight = isDesktop ? '100%' : '64px';
+              p.style.maxHeight = isDesktop ? '100%' : '64px';
+              p.style.borderColor = 'rgba(255, 255, 255, 0.12)';
+              p.style.backgroundColor = 'rgba(9, 9, 11, 0.8)';
+              p.style.cursor = 'pointer';
+
+              if (expanded) {
+                expanded.style.display = 'none';
+              }
+              if (collapsed) {
+                collapsed.style.display = 'flex';
+              }
+            }
+          });
+        }
+
+        panels.forEach((panel) => {
+          // Click & Touch to fold previous and expand clicked
+          panel.addEventListener('click', function (e) {
+            if (e.target.closest('a, button')) return;
+            setFocus(panel);
+          });
+
+          // Smooth desktop hover activation
+          panel.addEventListener('mouseenter', function () {
+            if (window.innerWidth >= 1024) {
+              setFocus(panel);
+            }
+          });
+
+          // Keyboard Accessibility
+          panel.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+              if (e.target.closest('a, button')) return;
+              e.preventDefault();
+              setFocus(panel);
+            }
+          });
+        });
+
+        // Initialize state on load
+        const defaultActive = accordion.querySelector('.fey-panel.is-active') || panels[0];
+        if (defaultActive) {
+          setFocus(defaultActive);
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAccordion);
+      } else {
+        initAccordion();
+      }
+    })();
+  </script>
 </body>
 </html>

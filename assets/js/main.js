@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initFireEmbersOverlay();
   initMobileNav();
   initPortfolioFilters();
-  initCaseStudyModal();
   initContactForm();
   initSmoothScroll();
   initInquiryRouting();
@@ -422,134 +421,7 @@ const PROJECT_DATABASE = {
   }
 };
 
-function initCaseStudyModal() {
-  const modal = document.getElementById('caseStudyModal');
-  const closeBtn = document.getElementById('closeModalBtn');
-  const modalBriefBtn = document.getElementById('modalStartBriefBtn');
-  const modalTriggers = document.querySelectorAll('.open-case-study');
 
-  if (!modal) return;
-
-  const modalTitle = document.getElementById('modalTitle');
-  const modalClient = document.getElementById('modalClient');
-  const modalPillar = document.getElementById('modalPillar');
-  const modalYear = document.getElementById('modalYear');
-  const modalImage = document.getElementById('modalImage');
-  const modalOverview = document.getElementById('modalOverview');
-  const modalDeliverables = document.getElementById('modalDeliverables');
-  const modalTools = document.getElementById('modalTools');
-  const modalImpact = document.getElementById('modalImpact');
-
-  let isModalOpen = false;
-
-  const showModalDOM = (projectId) => {
-    const data = PROJECT_DATABASE[projectId];
-    if (!data) return;
-
-    if (modalTitle) modalTitle.textContent = data.title;
-    if (modalClient) modalClient.textContent = data.client;
-    if (modalPillar) modalPillar.textContent = data.pillar;
-    if (modalYear) modalYear.textContent = data.year;
-    if (modalImage) {
-      modalImage.onerror = () => {
-        if (data.fallbackImage) modalImage.src = data.fallbackImage;
-      };
-      modalImage.src = data.coverImage;
-      modalImage.alt = data.title;
-    }
-    if (modalOverview) modalOverview.textContent = data.overview;
-    if (modalImpact) modalImpact.textContent = data.impact;
-
-    if (modalDeliverables) {
-      modalDeliverables.innerHTML = data.deliverables
-        .map(d => `<li class="flex items-start gap-2"><span class="text-red-500 font-bold">&bull;</span> <span>${d}</span></li>`)
-        .join('');
-    }
-
-    if (modalTools) {
-      modalTools.innerHTML = data.tools
-        .map(t => `<span class="glass-badge font-mono-tech text-xs">${t}</span>`)
-        .join('');
-    }
-
-    modal.style.display = 'flex';
-    modal.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-    isModalOpen = true;
-  };
-
-  const hideModalDOM = () => {
-    modal.style.display = 'none';
-    modal.classList.add('hidden');
-    document.body.style.overflow = '';
-    isModalOpen = false;
-  };
-
-  const openModal = (projectId, pushHistory = true) => {
-    showModalDOM(projectId);
-    if (pushHistory) {
-      try {
-        history.pushState({ modalOpen: true, projectId: projectId }, '', '#case-study');
-      } catch (err) {
-        // Fallback for sandboxed contexts
-      }
-    }
-  };
-
-  const closeModal = () => {
-    if (!isModalOpen) return;
-    hideModalDOM();
-    if (window.location.hash === '#case-study') {
-      try {
-        history.back();
-      } catch (err) {
-        history.replaceState(null, '', window.location.pathname + window.location.search);
-      }
-    }
-  };
-
-  // Browser Back / Forward Button Handling
-  window.addEventListener('popstate', (e) => {
-    if (isModalOpen && window.location.hash !== '#case-study') {
-      hideModalDOM();
-    } else if (e.state && e.state.modalOpen && e.state.projectId) {
-      showModalDOM(e.state.projectId);
-    }
-  });
-
-  modalTriggers.forEach(trigger => {
-    trigger.addEventListener('click', (e) => {
-      e.preventDefault();
-      const projectId = trigger.getAttribute('data-project-id');
-      openModal(projectId, true);
-    });
-  });
-
-  if (closeBtn) {
-    closeBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      closeModal();
-    });
-  }
-
-  if (modalBriefBtn) {
-    modalBriefBtn.addEventListener('click', () => {
-      closeModal();
-    });
-  }
-
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal || e.target.classList.contains('glass-modal-backdrop')) {
-      closeModal();
-    }
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && isModalOpen) {
-      closeModal();
-    }
-  });
-}
 
 // ============================================================================
 // 6. AJAX CONTACT FORM SUBMISSION

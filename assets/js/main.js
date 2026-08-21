@@ -746,26 +746,70 @@ function initEmailCopy() {
 // 10. FEY-STYLE EXPANDABLE ACCORDION ENGINE (IMAGE 1 REF)
 // ============================================================================
 function initVisualsAccordion() {
-  const panels = document.querySelectorAll('.accordion-panel');
+  const accordion = document.getElementById('feyAccordion') || document.getElementById('homeVisualsAccordion');
+  if (!accordion) return;
+
+  const panels = accordion.querySelectorAll('.fey-panel, .accordion-panel');
   if (!panels.length) return;
 
-  panels.forEach((panel) => {
-    // Click / touch to activate & expand panel
-    panel.addEventListener('click', (e) => {
-      // If user clicked an anchor or button inside the expanded card, don't interfere
-      if (e.target.closest('a, button')) return;
+  const setActivePanel = (targetPanel) => {
+    panels.forEach((p) => {
+      const isTarget = (p === targetPanel);
+      const expandedView = p.querySelector('.fey-expanded-view, .panel-expanded-content');
+      const collapsedView = p.querySelector('.fey-collapsed-view, .panel-collapsed-label');
 
-      panels.forEach(p => p.classList.remove('is-active'));
-      panel.classList.add('is-active');
+      if (isTarget) {
+        p.classList.add('is-active', 'border-white/30', 'bg-zinc-900/90', 'shadow-2xl', 'cursor-default');
+        p.classList.remove('border-white/10', 'bg-zinc-950/80', 'cursor-pointer');
+        
+        if (expandedView) {
+          expandedView.style.display = 'flex';
+          expandedView.classList.remove('hidden');
+          expandedView.classList.add('flex');
+        }
+        if (collapsedView) {
+          collapsedView.style.display = 'none';
+          collapsedView.classList.add('hidden');
+          collapsedView.classList.remove('flex');
+        }
+      } else {
+        p.classList.remove('is-active', 'border-white/30', 'bg-zinc-900/90', 'shadow-2xl', 'cursor-default');
+        p.classList.add('border-white/10', 'bg-zinc-950/80', 'cursor-pointer');
+        
+        if (expandedView) {
+          expandedView.style.display = 'none';
+          expandedView.classList.add('hidden');
+          expandedView.classList.remove('flex');
+        }
+        if (collapsedView) {
+          collapsedView.style.display = 'flex';
+          collapsedView.classList.remove('hidden');
+          collapsedView.classList.add('flex');
+        }
+      }
+    });
+  };
+
+  panels.forEach((panel) => {
+    // Click & Touch Support
+    panel.addEventListener('click', (e) => {
+      if (e.target.closest('a, button')) return;
+      setActivePanel(panel);
     });
 
-    // Keyboard accessibility
+    // Desktop Hover Enhancement
+    panel.addEventListener('mouseenter', () => {
+      if (window.innerWidth >= 1024) {
+        setActivePanel(panel);
+      }
+    });
+
+    // Keyboard Accessibility
     panel.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         if (e.target.closest('a, button')) return;
         e.preventDefault();
-        panels.forEach(p => p.classList.remove('is-active'));
-        panel.classList.add('is-active');
+        setActivePanel(panel);
       }
     });
   });

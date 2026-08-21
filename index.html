@@ -47,6 +47,40 @@
 
   <!-- Compiled Local Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Critical Fey Accordion Overrides -->
+  <style>
+    .fey-panel {
+      transition: flex 0.5s cubic-bezier(0.16, 1, 0.3, 1), max-width 0.5s cubic-bezier(0.16, 1, 0.3, 1), min-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    }
+    @media (min-width: 768px) {
+      .fey-panel.is-active {
+        flex: 5 1 0% !important;
+        max-width: 100% !important;
+        min-width: 360px !important;
+      }
+      .fey-panel:not(.is-active) {
+        flex: 1 1 0% !important;
+        max-width: 85px !important;
+        min-width: 60px !important;
+      }
+    }
+    @media (max-width: 767px) {
+      .fey-panel.is-active {
+        min-height: 480px !important;
+      }
+      .fey-panel:not(.is-active) {
+        min-height: 64px !important;
+        max-height: 64px !important;
+      }
+    }
+    .fey-vertical-title {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      white-space: nowrap;
+      letter-spacing: 0.08em;
+    }
+  </style>
 </head>
 <body class="bg-deep-black text-off-white min-h-screen flex flex-col antialiased selection:bg-vibrant-red selection:text-white relative">
 
@@ -841,7 +875,7 @@
     <!-- ==================================================================== -->
     <!-- FEY-STYLE EXPANDABLE HORIZONTAL ACCORDION SHOWCASE (IMAGE 1 REF) -->
     <!-- ==================================================================== -->
-    <section class="py-16 sm:py-24" id="vault">
+    <section class="py-16 sm:py-24 scroll-mt-28" id="vault">
       <div class="max-w-7xl mx-auto px-4 sm:px-8">
         
         <!-- Header: Minimalist Stark Typography (Image 1 Style) -->
@@ -858,87 +892,76 @@
           </p>
         </div>
 
-        <!-- Horizontal Accordion Deck -->
-        <div class="accordion-wrapper" id="homeVisualsAccordion">
+        <!-- Fey Horizontal Accordion Deck -->
+        <div class="flex flex-col md:flex-row items-stretch gap-3 md:gap-3.5 w-full min-h-[520px] md:h-[580px]" id="feyAccordion">
 
           <!-- Panel 1: Medusa Phuket (Active by Default) -->
           <div 
-            class="accordion-panel is-active group" 
+            class="fey-panel is-active relative overflow-hidden rounded-2xl md:rounded-3xl border border-white/30 bg-zinc-900/90 shadow-2xl transition-all duration-500 ease-out cursor-default w-full md:flex-[5] min-h-[480px] md:min-h-0" 
+            data-fey-index="0"
             tabindex="0"
             role="button"
             aria-label="Medusa Phuket Nightclub Visuals"
           >
-            <div class="absolute inset-0 z-0">
+            <!-- Background Image & Gradient Overlays -->
+            <div class="absolute inset-0 z-0 pointer-events-none">
               <img 
                 src="assets/images/works/medusa.jpg" 
                 alt="Medusa Phuket Nightlife Visuals" 
-                class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 brightness-75 contrast-125"
+                class="w-full h-full object-cover object-center brightness-75 contrast-125 transition-transform duration-700"
                 loading="lazy"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/20"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/30"></div>
               <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent"></div>
             </div>
 
-            <!-- Collapsed Vertical Title (Desktop) -->
-            <div class="panel-collapsed-label absolute inset-0 z-10 p-4 flex flex-col justify-between items-center pointer-events-none">
-              <div class="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-[10px] font-mono-tech text-white">
-                01
+            <!-- Collapsed State (Hidden on Active) -->
+            <div class="fey-collapsed-view absolute inset-0 z-10 p-4 hidden flex-col justify-between items-center pointer-events-none" style="display: none;">
+              <!-- Mobile Bar -->
+              <div class="flex md:hidden items-center justify-between w-full h-full px-2">
+                <div class="flex items-center gap-3">
+                  <span class="text-[10px] font-mono-tech text-white bg-white/10 px-2 py-0.5 rounded">01</span>
+                  <span class="font-space font-bold text-xs uppercase text-zinc-300">MEDUSA PHUKET // NIGHTLIFE</span>
+                </div>
+                <span class="text-vibrant-red text-sm font-bold">&darr;</span>
               </div>
-              <div class="vertical-panel-title font-space font-bold uppercase text-xs text-zinc-300 tracking-wider">
-                MEDUSA PHUKET // NIGHTLIFE
+              <!-- Desktop Vertical Tab -->
+              <div class="hidden md:flex flex-col justify-between items-center h-full w-full">
+                <div class="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-[10px] font-mono-tech text-white">01</div>
+                <div class="fey-vertical-title font-space font-bold uppercase text-xs text-zinc-300 tracking-wider">MEDUSA PHUKET // NIGHTLIFE</div>
+                <div class="text-vibrant-red text-xs">&rarr;</div>
               </div>
-              <div class="text-vibrant-red text-xs">&rarr;</div>
             </div>
 
-            <!-- Expanded Full Content Card -->
-            <div class="panel-expanded-content absolute inset-0 z-20 p-6 sm:p-10 flex flex-col justify-between">
+            <!-- Expanded State (Visible on Active) -->
+            <div class="fey-expanded-view relative z-20 h-full p-6 sm:p-10 flex flex-col justify-between" style="display: flex;">
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <span class="glass-badge font-mono-tech uppercase font-bold text-white">
-                    COMMERCIAL &bull; 2026
-                  </span>
-                  <span class="glass-badge font-mono-tech text-emerald-400 bg-emerald-500/10 border-emerald-500/30">
-                    LIVE CAMPAIGN
-                  </span>
+                  <span class="glass-badge font-mono-tech uppercase font-bold text-white">COMMERCIAL &bull; 2026</span>
+                  <span class="glass-badge font-mono-tech text-emerald-400 bg-emerald-500/10 border-emerald-500/30">LIVE CAMPAIGN</span>
                 </div>
-                <div class="font-mono-tech text-xs text-zinc-400 hidden sm:block">
-                  PHUKET, THAILAND
-                </div>
+                <div class="font-mono-tech text-xs text-zinc-400 hidden sm:block">PHUKET, THAILAND</div>
               </div>
 
               <div class="space-y-4 max-w-xl">
                 <div>
-                  <div class="font-mono-tech text-xs text-vibrant-red uppercase tracking-widest mb-1">
-                    NIGHTLIFE VISUAL DIRECTION & 4K REELS
-                  </div>
-                  <h3 class="font-syne font-black text-2xl sm:text-4xl text-white uppercase tracking-tight">
-                    MEDUSA PHUKET
-                  </h3>
+                  <div class="font-mono-tech text-xs text-vibrant-red uppercase tracking-widest mb-1">NIGHTLIFE VISUAL DIRECTION & 4K REELS</div>
+                  <h3 class="font-syne font-black text-2xl sm:text-4xl text-white uppercase tracking-tight">MEDUSA PHUKET</h3>
                 </div>
-
                 <p class="text-zinc-300 font-space text-xs sm:text-sm leading-relaxed">
                   High-energy nightclub atmosphere, commercial low-light bottle service visuals, and social media retainers driving over 1.8M organic views.
                 </p>
-
                 <div class="flex flex-wrap gap-2 pt-1 font-mono-tech text-[11px]">
                   <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/15 text-zinc-200">Sony A7SIII</span>
                   <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/15 text-zinc-200">35mm f/1.4 GM</span>
                   <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/15 text-zinc-200">4K Reels</span>
                 </div>
-
                 <div class="flex flex-wrap items-center gap-3 pt-3">
-                  <button 
-                    class="open-case-study glass-btn-primary px-6 py-3 text-xs font-space font-bold uppercase tracking-wider" 
-                    data-project-id="proj-1"
-                  >
+                  <button class="open-case-study glass-btn-primary px-6 py-3 text-xs font-space font-bold uppercase tracking-wider" data-project-id="proj-1">
                     <span>VIEW CASE STUDY</span>
                     <span>&nearr;</span>
                   </button>
-                  <a 
-                    href="#contact" 
-                    data-inquiry-msg="Inquiring about Commercial Nightlife Visuals like Medusa Phuket."
-                    class="service-inquire-btn glass-btn-secondary px-5 py-3 text-xs font-mono-tech uppercase font-bold"
-                  >
+                  <a href="#contact" data-inquiry-msg="Inquiring about Commercial Nightlife Visuals like Medusa Phuket." class="service-inquire-btn glass-btn-secondary px-5 py-3 text-xs font-mono-tech uppercase font-bold">
                     INQUIRE THIS WORK &rarr;
                   </a>
                 </div>
@@ -948,79 +971,67 @@
 
           <!-- Panel 2: Yoon Skin Clinic -->
           <div 
-            class="accordion-panel group" 
+            class="fey-panel relative overflow-hidden rounded-2xl md:rounded-3xl border border-white/10 bg-zinc-950/80 hover:border-white/25 hover:bg-zinc-900/60 transition-all duration-500 ease-out cursor-pointer w-full md:flex-1 md:max-w-[85px] min-h-[64px] md:min-h-0" 
+            data-fey-index="1"
             tabindex="0"
             role="button"
             aria-label="Yoon Skin Clinic Editorial"
           >
-            <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 z-0 pointer-events-none">
               <img 
                 src="assets/images/works/yoonskin.jpg" 
                 alt="Yoon Skin Editorial Layout" 
-                class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 brightness-75 contrast-125"
+                class="w-full h-full object-cover object-center brightness-75 contrast-125 transition-transform duration-700"
                 loading="lazy"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/20"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/30"></div>
               <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent"></div>
             </div>
 
-            <div class="panel-collapsed-label absolute inset-0 z-10 p-4 flex flex-col justify-between items-center pointer-events-none">
-              <div class="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-[10px] font-mono-tech text-white">
-                02
+            <!-- Collapsed State -->
+            <div class="fey-collapsed-view absolute inset-0 z-10 p-4 flex flex-col justify-between items-center pointer-events-none" style="display: flex;">
+              <div class="flex md:hidden items-center justify-between w-full h-full px-2">
+                <div class="flex items-center gap-3">
+                  <span class="text-[10px] font-mono-tech text-white bg-white/10 px-2 py-0.5 rounded">02</span>
+                  <span class="font-space font-bold text-xs uppercase text-zinc-300">YOON SKIN // EDITORIAL</span>
+                </div>
+                <span class="text-vibrant-red text-sm font-bold">&darr;</span>
               </div>
-              <div class="vertical-panel-title font-space font-bold uppercase text-xs text-zinc-300 tracking-wider">
-                YOON SKIN // EDITORIAL
+              <div class="hidden md:flex flex-col justify-between items-center h-full w-full">
+                <div class="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-[10px] font-mono-tech text-white">02</div>
+                <div class="fey-vertical-title font-space font-bold uppercase text-xs text-zinc-300 tracking-wider">YOON SKIN // EDITORIAL</div>
+                <div class="text-vibrant-red text-xs">&rarr;</div>
               </div>
-              <div class="text-vibrant-red text-xs">&rarr;</div>
             </div>
 
-            <div class="panel-expanded-content absolute inset-0 z-20 p-6 sm:p-10 flex flex-col justify-between">
+            <!-- Expanded State -->
+            <div class="fey-expanded-view relative z-20 h-full p-6 sm:p-10 hidden flex-col justify-between" style="display: none;">
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <span class="glass-badge font-mono-tech uppercase font-bold text-white">
-                    EDITORIAL &bull; 2026
-                  </span>
-                  <span class="glass-badge font-mono-tech text-emerald-400 bg-emerald-500/10 border-emerald-500/30">
-                    +420% PRE-ORDERS
-                  </span>
+                  <span class="glass-badge font-mono-tech uppercase font-bold text-white">EDITORIAL &bull; 2026</span>
+                  <span class="glass-badge font-mono-tech text-emerald-400 bg-emerald-500/10 border-emerald-500/30">+420% PRE-ORDERS</span>
                 </div>
-                <div class="font-mono-tech text-xs text-zinc-400 hidden sm:block">
-                  BEAUTY & DERMATOLOGY
-                </div>
+                <div class="font-mono-tech text-xs text-zinc-400 hidden sm:block">BEAUTY & DERMATOLOGY</div>
               </div>
 
               <div class="space-y-4 max-w-xl">
                 <div>
-                  <div class="font-mono-tech text-xs text-vibrant-red uppercase tracking-widest mb-1">
-                    KEY VISUAL PRODUCT DIRECTION & PACKAGING
-                  </div>
-                  <h3 class="font-syne font-black text-2xl sm:text-4xl text-white uppercase tracking-tight">
-                    YOON SKIN CLINIC
-                  </h3>
+                  <div class="font-mono-tech text-xs text-vibrant-red uppercase tracking-widest mb-1">KEY VISUAL PRODUCT DIRECTION & PACKAGING</div>
+                  <h3 class="font-syne font-black text-2xl sm:text-4xl text-white uppercase tracking-tight">YOON SKIN CLINIC</h3>
                 </div>
-
                 <p class="text-zinc-300 font-space text-xs sm:text-sm leading-relaxed">
                   Minimalist dermatology product photography, clean macro texture lighting, and multi-platform promotional poster visuals.
                 </p>
-
                 <div class="flex flex-wrap gap-2 pt-1 font-mono-tech text-[11px]">
                   <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/15 text-zinc-200">Macro 90mm GM</span>
                   <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/15 text-zinc-200">Studio Retouching</span>
                 </div>
-
                 <div class="flex flex-wrap items-center gap-3 pt-3">
-                  <button 
-                    class="open-case-study glass-btn-primary px-6 py-3 text-xs font-space font-bold uppercase tracking-wider" 
-                    data-project-id="proj-2"
-                  >
+                  <button class="open-case-study glass-btn-primary px-6 py-3 text-xs font-space font-bold uppercase tracking-wider" data-project-id="proj-2">
                     <span>VIEW CASE STUDY</span>
                     <span>&nearr;</span>
                   </button>
-                  <a 
-                    href="#contact" 
-                    data-inquiry-msg="Inquiring about Product & Editorial Photography like Yoon Skin."
-                    class="service-inquire-btn glass-btn-secondary px-5 py-3 text-xs font-mono-tech uppercase font-bold"
-                  >
+                  <a href="#contact" data-inquiry-msg="Inquiring about Product & Editorial Photography like Yoon Skin." class="service-inquire-btn glass-btn-secondary px-5 py-3 text-xs font-mono-tech uppercase font-bold">
                     INQUIRE THIS WORK &rarr;
                   </a>
                 </div>
@@ -1030,79 +1041,67 @@
 
           <!-- Panel 3: Oggi Restaurant -->
           <div 
-            class="accordion-panel group" 
+            class="fey-panel relative overflow-hidden rounded-2xl md:rounded-3xl border border-white/10 bg-zinc-950/80 hover:border-white/25 hover:bg-zinc-900/60 transition-all duration-500 ease-out cursor-pointer w-full md:flex-1 md:max-w-[85px] min-h-[64px] md:min-h-0" 
+            data-fey-index="2"
             tabindex="0"
             role="button"
             aria-label="Oggi Restaurant Hospitality Visuals"
           >
-            <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 z-0 pointer-events-none">
               <img 
                 src="assets/images/works/oggi.jpg" 
                 alt="Oggi Restaurant Phuket Hospitality Visuals" 
-                class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 brightness-75 contrast-125"
+                class="w-full h-full object-cover object-center brightness-75 contrast-125 transition-transform duration-700"
                 loading="lazy"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/20"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/30"></div>
               <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent"></div>
             </div>
 
-            <div class="panel-collapsed-label absolute inset-0 z-10 p-4 flex flex-col justify-between items-center pointer-events-none">
-              <div class="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-[10px] font-mono-tech text-white">
-                03
+            <!-- Collapsed State -->
+            <div class="fey-collapsed-view absolute inset-0 z-10 p-4 flex flex-col justify-between items-center pointer-events-none" style="display: flex;">
+              <div class="flex md:hidden items-center justify-between w-full h-full px-2">
+                <div class="flex items-center gap-3">
+                  <span class="text-[10px] font-mono-tech text-white bg-white/10 px-2 py-0.5 rounded">03</span>
+                  <span class="font-space font-bold text-xs uppercase text-zinc-300">OGGI PHUKET // CULINARY</span>
+                </div>
+                <span class="text-vibrant-red text-sm font-bold">&darr;</span>
               </div>
-              <div class="vertical-panel-title font-space font-bold uppercase text-xs text-zinc-300 tracking-wider">
-                OGGI PHUKET // CULINARY
+              <div class="hidden md:flex flex-col justify-between items-center h-full w-full">
+                <div class="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-[10px] font-mono-tech text-white">03</div>
+                <div class="fey-vertical-title font-space font-bold uppercase text-xs text-zinc-300 tracking-wider">OGGI PHUKET // CULINARY</div>
+                <div class="text-vibrant-red text-xs">&rarr;</div>
               </div>
-              <div class="text-vibrant-red text-xs">&rarr;</div>
             </div>
 
-            <div class="panel-expanded-content absolute inset-0 z-20 p-6 sm:p-10 flex flex-col justify-between">
+            <!-- Expanded State -->
+            <div class="fey-expanded-view relative z-20 h-full p-6 sm:p-10 hidden flex-col justify-between" style="display: none;">
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <span class="glass-badge font-mono-tech uppercase font-bold text-white">
-                    HOSPITALITY &bull; 2026
-                  </span>
-                  <span class="glass-badge font-mono-tech text-emerald-400 bg-emerald-500/10 border-emerald-500/30">
-                    +65% TRAFFIC
-                  </span>
+                  <span class="glass-badge font-mono-tech uppercase font-bold text-white">HOSPITALITY &bull; 2026</span>
+                  <span class="glass-badge font-mono-tech text-emerald-400 bg-emerald-500/10 border-emerald-500/30">+65% TRAFFIC</span>
                 </div>
-                <div class="font-mono-tech text-xs text-zinc-400 hidden sm:block">
-                  CULINARY & AMBIENCE
-                </div>
+                <div class="font-mono-tech text-xs text-zinc-400 hidden sm:block">CULINARY & AMBIENCE</div>
               </div>
 
               <div class="space-y-4 max-w-xl">
                 <div>
-                  <div class="font-mono-tech text-xs text-vibrant-red uppercase tracking-widest mb-1">
-                    CULINARY CONTENT & SOCIAL SCALING
-                  </div>
-                  <h3 class="font-syne font-black text-2xl sm:text-4xl text-white uppercase tracking-tight">
-                    OGGI RESTAURANT
-                  </h3>
+                  <div class="font-mono-tech text-xs text-vibrant-red uppercase tracking-widest mb-1">CULINARY CONTENT & SOCIAL SCALING</div>
+                  <h3 class="font-syne font-black text-2xl sm:text-4xl text-white uppercase tracking-tight">OGGI RESTAURANT</h3>
                 </div>
-
                 <p class="text-zinc-300 font-space text-xs sm:text-sm leading-relaxed">
                   End-to-end culinary content retainers, low-key dining ambience, cocktail photography, and paid ad funnel management.
                 </p>
-
                 <div class="flex flex-wrap gap-2 pt-1 font-mono-tech text-[11px]">
                   <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/15 text-zinc-200">Culinary Retainer</span>
                   <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/15 text-zinc-200">Cocktail Direction</span>
                 </div>
-
                 <div class="flex flex-wrap items-center gap-3 pt-3">
-                  <button 
-                    class="open-case-study glass-btn-primary px-6 py-3 text-xs font-space font-bold uppercase tracking-wider" 
-                    data-project-id="proj-3"
-                  >
+                  <button class="open-case-study glass-btn-primary px-6 py-3 text-xs font-space font-bold uppercase tracking-wider" data-project-id="proj-3">
                     <span>VIEW CASE STUDY</span>
                     <span>&nearr;</span>
                   </button>
-                  <a 
-                    href="#contact" 
-                    data-inquiry-msg="Inquiring about Culinary & Hospitality Visuals like Oggi Restaurant."
-                    class="service-inquire-btn glass-btn-secondary px-5 py-3 text-xs font-mono-tech uppercase font-bold"
-                  >
+                  <a href="#contact" data-inquiry-msg="Inquiring about Culinary & Hospitality Visuals like Oggi Restaurant." class="service-inquire-btn glass-btn-secondary px-5 py-3 text-xs font-mono-tech uppercase font-bold">
                     INQUIRE THIS WORK &rarr;
                   </a>
                 </div>
@@ -1112,79 +1111,67 @@
 
           <!-- Panel 4: Patong Beach Festival 2025 -->
           <div 
-            class="accordion-panel group" 
+            class="fey-panel relative overflow-hidden rounded-2xl md:rounded-3xl border border-white/10 bg-zinc-950/80 hover:border-white/25 hover:bg-zinc-900/60 transition-all duration-500 ease-out cursor-pointer w-full md:flex-1 md:max-w-[85px] min-h-[64px] md:min-h-0" 
+            data-fey-index="3"
             tabindex="0"
             role="button"
             aria-label="Patong Beach Festival 2025 Stage Visuals"
           >
-            <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 z-0 pointer-events-none">
               <img 
                 src="assets/images/works/patong.jpg" 
                 alt="Patong Beach Festival 2025 Live Stage" 
-                class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 brightness-75 contrast-125"
+                class="w-full h-full object-cover object-center brightness-75 contrast-125 transition-transform duration-700"
                 loading="lazy"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/20"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/30"></div>
               <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent"></div>
             </div>
 
-            <div class="panel-collapsed-label absolute inset-0 z-10 p-4 flex flex-col justify-between items-center pointer-events-none">
-              <div class="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-[10px] font-mono-tech text-white">
-                04
+            <!-- Collapsed State -->
+            <div class="fey-collapsed-view absolute inset-0 z-10 p-4 flex flex-col justify-between items-center pointer-events-none" style="display: flex;">
+              <div class="flex md:hidden items-center justify-between w-full h-full px-2">
+                <div class="flex items-center gap-3">
+                  <span class="text-[10px] font-mono-tech text-white bg-white/10 px-2 py-0.5 rounded">04</span>
+                  <span class="font-space font-bold text-xs uppercase text-zinc-300">PATONG FESTIVAL // CONCERT</span>
+                </div>
+                <span class="text-vibrant-red text-sm font-bold">&darr;</span>
               </div>
-              <div class="vertical-panel-title font-space font-bold uppercase text-xs text-zinc-300 tracking-wider">
-                PATONG FESTIVAL // CONCERT
+              <div class="hidden md:flex flex-col justify-between items-center h-full w-full">
+                <div class="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-[10px] font-mono-tech text-white">04</div>
+                <div class="fey-vertical-title font-space font-bold uppercase text-xs text-zinc-300 tracking-wider">PATONG FESTIVAL // CONCERT</div>
+                <div class="text-vibrant-red text-xs">&rarr;</div>
               </div>
-              <div class="text-vibrant-red text-xs">&rarr;</div>
             </div>
 
-            <div class="panel-expanded-content absolute inset-0 z-20 p-6 sm:p-10 flex flex-col justify-between">
+            <!-- Expanded State -->
+            <div class="fey-expanded-view relative z-20 h-full p-6 sm:p-10 hidden flex-col justify-between" style="display: none;">
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <span class="glass-badge font-mono-tech uppercase font-bold text-white">
-                    FESTIVAL &bull; 2025
-                  </span>
-                  <span class="glass-badge font-mono-tech text-white bg-white/10 border-white/20">
-                    STAGE COVERAGE
-                  </span>
+                  <span class="glass-badge font-mono-tech uppercase font-bold text-white">FESTIVAL &bull; 2025</span>
+                  <span class="glass-badge font-mono-tech text-white bg-white/10 border-white/20">STAGE COVERAGE</span>
                 </div>
-                <div class="font-mono-tech text-xs text-zinc-400 hidden sm:block">
-                  PATONG BEACH, PHUKET
-                </div>
+                <div class="font-mono-tech text-xs text-zinc-400 hidden sm:block">PATONG BEACH, PHUKET</div>
               </div>
 
               <div class="space-y-4 max-w-xl">
                 <div>
-                  <div class="font-mono-tech text-xs text-vibrant-red uppercase tracking-widest mb-1">
-                    HIGH-ENERGY CONCERT PHOTOGRAPHY & MEDIA
-                  </div>
-                  <h3 class="font-syne font-black text-2xl sm:text-4xl text-white uppercase tracking-tight">
-                    PATONG BEACH FESTIVAL
-                  </h3>
+                  <div class="font-mono-tech text-xs text-vibrant-red uppercase tracking-widest mb-1">HIGH-ENERGY CONCERT PHOTOGRAPHY & MEDIA</div>
+                  <h3 class="font-syne font-black text-2xl sm:text-4xl text-white uppercase tracking-tight">PATONG BEACH FESTIVAL</h3>
                 </div>
-
                 <p class="text-zinc-300 font-space text-xs sm:text-sm leading-relaxed">
                   High-energy concert photography, low-light stage visual coverage, and festival crowd documentation for primary headliners.
                 </p>
-
                 <div class="flex flex-wrap gap-2 pt-1 font-mono-tech text-[11px]">
                   <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/15 text-zinc-200">Sony A7SIII</span>
                   <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/15 text-zinc-200">70-200mm f/2.8 GM</span>
                 </div>
-
                 <div class="flex flex-wrap items-center gap-3 pt-3">
-                  <button 
-                    class="open-case-study glass-btn-primary px-6 py-3 text-xs font-space font-bold uppercase tracking-wider" 
-                    data-project-id="proj-4"
-                  >
+                  <button class="open-case-study glass-btn-primary px-6 py-3 text-xs font-space font-bold uppercase tracking-wider" data-project-id="proj-4">
                     <span>VIEW CASE STUDY</span>
                     <span>&nearr;</span>
                   </button>
-                  <a 
-                    href="#contact" 
-                    data-inquiry-msg="Inquiring about Live Event & Concert Visual Coverage."
-                    class="service-inquire-btn glass-btn-secondary px-5 py-3 text-xs font-mono-tech uppercase font-bold"
-                  >
+                  <a href="#contact" data-inquiry-msg="Inquiring about Live Event & Concert Visual Coverage." class="service-inquire-btn glass-btn-secondary px-5 py-3 text-xs font-mono-tech uppercase font-bold">
                     INQUIRE THIS WORK &rarr;
                   </a>
                 </div>
@@ -1194,79 +1181,67 @@
 
           <!-- Panel 5: Nike In Town Concept -->
           <div 
-            class="accordion-panel group" 
+            class="fey-panel relative overflow-hidden rounded-2xl md:rounded-3xl border border-white/10 bg-zinc-950/80 hover:border-white/25 hover:bg-zinc-900/60 transition-all duration-500 ease-out cursor-pointer w-full md:flex-1 md:max-w-[85px] min-h-[64px] md:min-h-0" 
+            data-fey-index="4"
             tabindex="0"
             role="button"
             aria-label="Nike In Town Streetwear Poster Concept"
           >
-            <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 z-0 pointer-events-none">
               <img 
                 src="assets/images/works/nike.jpg" 
                 alt="Nike In Town Streetwear Poster Concept" 
-                class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 brightness-75 contrast-125"
+                class="w-full h-full object-cover object-center brightness-75 contrast-125 transition-transform duration-700"
                 loading="lazy"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/20"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/30"></div>
               <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent"></div>
             </div>
 
-            <div class="panel-collapsed-label absolute inset-0 z-10 p-4 flex flex-col justify-between items-center pointer-events-none">
-              <div class="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-[10px] font-mono-tech text-white">
-                05
+            <!-- Collapsed State -->
+            <div class="fey-collapsed-view absolute inset-0 z-10 p-4 flex flex-col justify-between items-center pointer-events-none" style="display: flex;">
+              <div class="flex md:hidden items-center justify-between w-full h-full px-2">
+                <div class="flex items-center gap-3">
+                  <span class="text-[10px] font-mono-tech text-white bg-white/10 px-2 py-0.5 rounded">05</span>
+                  <span class="font-space font-bold text-xs uppercase text-zinc-300">NIKE // "IN TOWN" CONCEPT</span>
+                </div>
+                <span class="text-vibrant-red text-sm font-bold">&darr;</span>
               </div>
-              <div class="vertical-panel-title font-space font-bold uppercase text-xs text-zinc-300 tracking-wider">
-                NIKE // "IN TOWN" CONCEPT
+              <div class="hidden md:flex flex-col justify-between items-center h-full w-full">
+                <div class="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-[10px] font-mono-tech text-white">05</div>
+                <div class="fey-vertical-title font-space font-bold uppercase text-xs text-zinc-300 tracking-wider">NIKE // "IN TOWN" CONCEPT</div>
+                <div class="text-vibrant-red text-xs">&rarr;</div>
               </div>
-              <div class="text-vibrant-red text-xs">&rarr;</div>
             </div>
 
-            <div class="panel-expanded-content absolute inset-0 z-20 p-6 sm:p-10 flex flex-col justify-between">
+            <!-- Expanded State -->
+            <div class="fey-expanded-view relative z-20 h-full p-6 sm:p-10 hidden flex-col justify-between" style="display: none;">
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <span class="glass-badge font-mono-tech uppercase font-bold text-white">
-                    AD CONCEPT &bull; 2026
-                  </span>
-                  <span class="glass-badge font-mono-tech text-vibrant-red bg-vibrant-red/10 border-vibrant-red/30">
-                    STREETWEAR
-                  </span>
+                  <span class="glass-badge font-mono-tech uppercase font-bold text-white">AD CONCEPT &bull; 2026</span>
+                  <span class="glass-badge font-mono-tech text-vibrant-red bg-vibrant-red/10 border-vibrant-red/30">STREETWEAR</span>
                 </div>
-                <div class="font-mono-tech text-xs text-zinc-400 hidden sm:block">
-                  RETAIL POSTER DESIGN
-                </div>
+                <div class="font-mono-tech text-xs text-zinc-400 hidden sm:block">RETAIL POSTER DESIGN</div>
               </div>
 
               <div class="space-y-4 max-w-xl">
                 <div>
-                  <div class="font-mono-tech text-xs text-vibrant-red uppercase tracking-widest mb-1">
-                    DYNAMIC STREETWEAR POSTER & PROMO DIRECTION
-                  </div>
-                  <h3 class="font-syne font-black text-2xl sm:text-4xl text-white uppercase tracking-tight">
-                    NIKE // "IN TOWN"
-                  </h3>
+                  <div class="font-mono-tech text-xs text-vibrant-red uppercase tracking-widest mb-1">DYNAMIC STREETWEAR POSTER & PROMO DIRECTION</div>
+                  <h3 class="font-syne font-black text-2xl sm:text-4xl text-white uppercase tracking-tight">NIKE // "IN TOWN"</h3>
                 </div>
-
                 <p class="text-zinc-300 font-space text-xs sm:text-sm leading-relaxed">
                   Retail promotional visual direction, dynamic streetwear poster concept, and local store ad design created for high-contrast impact.
                 </p>
-
                 <div class="flex flex-wrap gap-2 pt-1 font-mono-tech text-[11px]">
                   <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/15 text-zinc-200">Adobe Photoshop</span>
                   <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/15 text-zinc-200">Urban Typography</span>
                 </div>
-
                 <div class="flex flex-wrap items-center gap-3 pt-3">
-                  <button 
-                    class="open-case-study glass-btn-primary px-6 py-3 text-xs font-space font-bold uppercase tracking-wider" 
-                    data-project-id="proj-6"
-                  >
+                  <button class="open-case-study glass-btn-primary px-6 py-3 text-xs font-space font-bold uppercase tracking-wider" data-project-id="proj-6">
                     <span>VIEW CASE STUDY</span>
                     <span>&nearr;</span>
                   </button>
-                  <a 
-                    href="#contact" 
-                    data-inquiry-msg="Inquiring about Ad Concepts & Poster Design."
-                    class="service-inquire-btn glass-btn-secondary px-5 py-3 text-xs font-mono-tech uppercase font-bold"
-                  >
+                  <a href="#contact" data-inquiry-msg="Inquiring about Ad Concepts & Poster Design." class="service-inquire-btn glass-btn-secondary px-5 py-3 text-xs font-mono-tech uppercase font-bold">
                     INQUIRE THIS WORK &rarr;
                   </a>
                 </div>
@@ -1276,79 +1251,67 @@
 
           <!-- Panel 6: 35mm Analog Archive -->
           <div 
-            class="accordion-panel group" 
+            class="fey-panel relative overflow-hidden rounded-2xl md:rounded-3xl border border-white/10 bg-zinc-950/80 hover:border-white/25 hover:bg-zinc-900/60 transition-all duration-500 ease-out cursor-pointer w-full md:flex-1 md:max-w-[85px] min-h-[64px] md:min-h-0" 
+            data-fey-index="5"
             tabindex="0"
             role="button"
             aria-label="35mm Film & Street Archive"
           >
-            <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 z-0 pointer-events-none">
               <img 
                 src="assets/images/works/memories.jpg" 
                 alt="35mm Street & Documentary Archive" 
-                class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 brightness-75 contrast-125"
+                class="w-full h-full object-cover object-center brightness-75 contrast-125 transition-transform duration-700"
                 loading="lazy"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/20"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/30"></div>
               <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent"></div>
             </div>
 
-            <div class="panel-collapsed-label absolute inset-0 z-10 p-4 flex flex-col justify-between items-center pointer-events-none">
-              <div class="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-[10px] font-mono-tech text-white">
-                06
+            <!-- Collapsed State -->
+            <div class="fey-collapsed-view absolute inset-0 z-10 p-4 flex flex-col justify-between items-center pointer-events-none" style="display: flex;">
+              <div class="flex md:hidden items-center justify-between w-full h-full px-2">
+                <div class="flex items-center gap-3">
+                  <span class="text-[10px] font-mono-tech text-white bg-white/10 px-2 py-0.5 rounded">06</span>
+                  <span class="font-space font-bold text-xs uppercase text-zinc-300">35MM STREET // ARCHIVE</span>
+                </div>
+                <span class="text-vibrant-red text-sm font-bold">&darr;</span>
               </div>
-              <div class="vertical-panel-title font-space font-bold uppercase text-xs text-zinc-300 tracking-wider">
-                35MM STREET // ARCHIVE
+              <div class="hidden md:flex flex-col justify-between items-center h-full w-full">
+                <div class="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-[10px] font-mono-tech text-white">06</div>
+                <div class="fey-vertical-title font-space font-bold uppercase text-xs text-zinc-300 tracking-wider">35MM STREET // ARCHIVE</div>
+                <div class="text-vibrant-red text-xs">&rarr;</div>
               </div>
-              <div class="text-vibrant-red text-xs">&rarr;</div>
             </div>
 
-            <div class="panel-expanded-content absolute inset-0 z-20 p-6 sm:p-10 flex flex-col justify-between">
+            <!-- Expanded State -->
+            <div class="fey-expanded-view relative z-20 h-full p-6 sm:p-10 hidden flex-col justify-between" style="display: none;">
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <span class="glass-badge font-mono-tech uppercase font-bold text-white">
-                    STREET &bull; 2025
-                  </span>
-                  <span class="glass-badge font-mono-tech text-zinc-300 bg-white/10 border-white/20">
-                    ANALOG 35MM
-                  </span>
+                  <span class="glass-badge font-mono-tech uppercase font-bold text-white">STREET &bull; 2025</span>
+                  <span class="glass-badge font-mono-tech text-zinc-300 bg-white/10 border-white/20">ANALOG 35MM</span>
                 </div>
-                <div class="font-mono-tech text-xs text-zinc-400 hidden sm:block">
-                  DOCUMENTARY SERIES
-                </div>
+                <div class="font-mono-tech text-xs text-zinc-400 hidden sm:block">DOCUMENTARY SERIES</div>
               </div>
 
               <div class="space-y-4 max-w-xl">
                 <div>
-                  <div class="font-mono-tech text-xs text-vibrant-red uppercase tracking-widest mb-1">
-                    DOCUMENTARY STREET & GRAIN AESTHETICS
-                  </div>
-                  <h3 class="font-syne font-black text-2xl sm:text-4xl text-white uppercase tracking-tight">
-                    35MM ANALOG ARCHIVE
-                  </h3>
+                  <div class="font-mono-tech text-xs text-vibrant-red uppercase tracking-widest mb-1">DOCUMENTARY STREET & GRAIN AESTHETICS</div>
+                  <h3 class="font-syne font-black text-2xl sm:text-4xl text-white uppercase tracking-tight">35MM ANALOG ARCHIVE</h3>
                 </div>
-
                 <p class="text-zinc-300 font-space text-xs sm:text-sm leading-relaxed">
                   Documentary street photography, low-light night captures, and raw 35mm grain aesthetics capturing spontaneous raw urban moments.
                 </p>
-
                 <div class="flex flex-wrap gap-2 pt-1 font-mono-tech text-[11px]">
                   <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/15 text-zinc-200">Leica M</span>
                   <span class="px-2.5 py-1 rounded-md bg-white/10 border border-white/15 text-zinc-200">Portra 400</span>
                 </div>
-
                 <div class="flex flex-wrap items-center gap-3 pt-3">
-                  <button 
-                    class="open-case-study glass-btn-primary px-6 py-3 text-xs font-space font-bold uppercase tracking-wider" 
-                    data-project-id="proj-7"
-                  >
+                  <button class="open-case-study glass-btn-primary px-6 py-3 text-xs font-space font-bold uppercase tracking-wider" data-project-id="proj-7">
                     <span>VIEW CASE STUDY</span>
                     <span>&nearr;</span>
                   </button>
-                  <a 
-                    href="#contact" 
-                    data-inquiry-msg="Inquiring about Documentary Street Photography."
-                    class="service-inquire-btn glass-btn-secondary px-5 py-3 text-xs font-mono-tech uppercase font-bold"
-                  >
+                  <a href="#contact" data-inquiry-msg="Inquiring about Documentary Street Photography." class="service-inquire-btn glass-btn-secondary px-5 py-3 text-xs font-mono-tech uppercase font-bold">
                     INQUIRE THIS WORK &rarr;
                   </a>
                 </div>

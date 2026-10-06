@@ -46,7 +46,7 @@
   </script>
 
   <!-- Compiled Local Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261006-typography" />
+  <link rel="stylesheet" href="assets/css/style.css?v=20261006-sidenav" />
 
   <!-- Critical Fey Accordion Overrides -->
   <style>
@@ -109,60 +109,6 @@
         </span>
       </a>
 
-      <!-- Navigation Links -->
-      <nav class="hidden md:flex items-center gap-8 font-body text-sm font-bold tracking-wider uppercase">
-        <a href="#visuals" class="text-zinc-300 hover:text-white transition-colors">
-          VISUALS
-        </a>
-        <a href="#systems" class="text-zinc-300 hover:text-white transition-colors">
-          SYSTEMS
-        </a>
-        <a href="#growth" class="text-zinc-300 hover:text-white transition-colors">
-          GROWTH
-        </a>
-        <a href="#work" class="text-zinc-300 hover:text-white transition-colors">
-          SELECTED WORK
-        </a>
-      </nav>
-
-      <!-- Glass Pill CTA Button (Image 1 Style) -->
-      <div class="hidden sm:flex items-center gap-4">
-        <a href="#contact" class="glass-btn-pill">
-          <span class="glass-icon-circle">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 17L17 7M17 7H7M17 7v10" />
-            </svg>
-          </span>
-          <span>START A PROJECT</span>
-        </a>
-      </div>
-
-      <!-- Mobile Menu Button -->
-      <button id="mobileMenuBtn" aria-label="Toggle Menu" class="p-2.5 rounded-xl bg-white/5 border border-white/10 text-white md:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-
-    </div>
-
-    <!-- Mobile Drawer -->
-    <div id="mobileMenu" class="hidden md:hidden bg-zinc-950/95 backdrop-blur-2xl border-b border-white/10 px-6 py-6 font-body text-sm uppercase space-y-4" style="display: none;">
-      <a href="#visuals" class="mobile-nav-link block py-2 border-b border-white/10 text-zinc-300">
-        VISUALS // COMMERCIAL PHOTOGRAPHY
-      </a>
-      <a href="#systems" class="mobile-nav-link block py-2 border-b border-white/10 text-zinc-300">
-        SYSTEMS // FULL-STACK & MYSQL
-      </a>
-      <a href="#growth" class="mobile-nav-link block py-2 border-b border-white/10 text-zinc-300">
-        GROWTH // PERFORMANCE MARKETING
-      </a>
-      <a href="#work" class="mobile-nav-link block py-2 border-b border-white/10 text-zinc-300">
-        SELECTED WORK // ARCHIVE
-      </a>
-      <a href="#contact" class="mobile-nav-link block py-2 text-vibrant-red font-bold">
-        START A PROJECT &rarr;
-      </a>
     </div>
   </header>
 
@@ -1296,126 +1242,18 @@
     </section>
   </main>
 
-  <!-- ====================================================================== -->
-  <!-- FLOATING RIGHT-SIDE VERTICAL SCROLL NAVIGATION (REF IMAGE STYLE) -->
-  <!-- ====================================================================== -->
-  <aside 
-    id="floatingScrollNav" 
-    class="fixed right-3 sm:right-5 top-1/2 -translate-y-1/2 z-40 hidden sm:flex flex-col items-center py-3.5 px-2 rounded-full bg-zinc-950/85 backdrop-blur-2xl border border-white/15 shadow-2xl space-y-2 select-none"
-    aria-label="Quick Section Navigation"
-  >
-    <!-- Spark Top Indicator (Back to Top / Hero) -->
-    <a 
-      href="#hero" 
-      class="scroll-nav-link group relative w-8 h-8 rounded-full flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/10 transition-all duration-300" 
-      data-target="hero"
-      aria-label="Navigate to Top / Hero"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-vibrant-red group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 0l2.8 9.2L24 12l-9.2 2.8L12 24l-2.8-9.2L0 12l9.2-2.8z"/>
-      </svg>
-      <!-- Tooltip -->
-      <span class="absolute right-11 top-1/2 -translate-y-1/2 px-2.5 py-1 rounded-lg bg-zinc-900/95 border border-white/20 text-xs font-label text-white uppercase tracking-wider whitespace-nowrap opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 pointer-events-none shadow-2xl">
-        TOP // HERO
-      </span>
-    </a>
-
-    <div class="w-4 h-px bg-white/10"></div>
-
-    <!-- Section 1: Visuals -->
-    <a 
-      href="#visuals" 
-      class="scroll-nav-link group relative w-8 h-8 rounded-full flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/10 transition-all duration-300" 
-      data-target="visuals"
-      aria-label="Navigate to Commercial Visuals"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-      </svg>
-      <span class="absolute right-11 top-1/2 -translate-y-1/2 px-2.5 py-1 rounded-lg bg-zinc-900/95 border border-white/20 text-xs font-label text-white uppercase tracking-wider whitespace-nowrap opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 pointer-events-none shadow-2xl">
-        [01] VISUALS
-      </span>
-    </a>
-
-    <!-- Section 2: Systems -->
-    <a 
-      href="#systems" 
-      class="scroll-nav-link group relative w-8 h-8 rounded-full flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/10 transition-all duration-300" 
-      data-target="systems"
-      aria-label="Navigate to Tech Systems"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-      </svg>
-      <span class="absolute right-11 top-1/2 -translate-y-1/2 px-2.5 py-1 rounded-lg bg-zinc-900/95 border border-white/20 text-xs font-label text-white uppercase tracking-wider whitespace-nowrap opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 pointer-events-none shadow-2xl">
-        [02] SYSTEMS
-      </span>
-    </a>
-
-    <!-- Section 3: Growth -->
-    <a 
-      href="#growth" 
-      class="scroll-nav-link group relative w-8 h-8 rounded-full flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/10 transition-all duration-300" 
-      data-target="growth"
-      aria-label="Navigate to Performance Growth"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-      </svg>
-      <span class="absolute right-11 top-1/2 -translate-y-1/2 px-2.5 py-1 rounded-lg bg-zinc-900/95 border border-white/20 text-xs font-label text-white uppercase tracking-wider whitespace-nowrap opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 pointer-events-none shadow-2xl">
-        [03] GROWTH
-      </span>
-    </a>
-
-    <!-- Section 4: Selected Work -->
-    <a 
-      href="#work" 
-      class="scroll-nav-link group relative w-8 h-8 rounded-full flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/10 transition-all duration-300" 
-      data-target="work"
-      aria-label="Navigate to Selected Work"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-      </svg>
-      <span class="absolute right-11 top-1/2 -translate-y-1/2 px-2.5 py-1 rounded-lg bg-zinc-900/95 border border-white/20 text-xs font-label text-white uppercase tracking-wider whitespace-nowrap opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 pointer-events-none shadow-2xl">
-        [04] SELECTED WORK
-      </span>
-    </a>
-
-    <!-- Section 5: Commercial Visuals & Media Accordion -->
-    <a 
-      href="#vault" 
-      class="scroll-nav-link group relative w-8 h-8 rounded-full flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/10 transition-all duration-300" 
-      data-target="vault"
-      aria-label="Navigate to Visual Archive Deck"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-      </svg>
-      <span class="absolute right-11 top-1/2 -translate-y-1/2 px-2.5 py-1 rounded-lg bg-zinc-900/95 border border-white/20 text-xs font-label text-white uppercase tracking-wider whitespace-nowrap opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 pointer-events-none shadow-2xl">
-        [05] VISUAL DECK
-      </span>
-    </a>
-
-    <!-- Slim Center Divider Rail Line -->
-    <div class="w-px h-5 bg-white/20"></div>
-
-    <!-- Section 6: Contact / Inquiries -->
-    <a 
-      href="#contact" 
-      class="scroll-nav-link group relative w-8 h-8 rounded-full flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/10 transition-all duration-300" 
-      data-target="contact"
-      aria-label="Navigate to Start A Project"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      </svg>
-      <span class="absolute right-11 top-1/2 -translate-y-1/2 px-2.5 py-1 rounded-lg bg-zinc-900/95 border border-white/20 text-xs font-label text-white uppercase tracking-wider whitespace-nowrap opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 pointer-events-none shadow-2xl">
-        [06] START BRIEF
-      </span>
-    </a>
-  </aside>
+  <nav id="sectionNav" class="section-nav" aria-label="Page sections">
+    <button type="button" id="sectionNavToggle" class="section-nav-toggle" aria-expanded="false" aria-controls="sectionNavLinks">Sections</button>
+    <div id="sectionNavLinks" class="section-nav-links">
+      <p class="section-nav-title">On this page</p>
+      <a href="#hero" class="section-nav-link" aria-current="location">Overview</a>
+      <a href="#services" class="section-nav-link">Services</a>
+      <a href="#work" class="section-nav-link">Selected work</a>
+      <a href="#profile" class="section-nav-link">About</a>
+      <a href="#vault" class="section-nav-link">Photography</a>
+      <a href="#contact" class="section-nav-link">Contact</a>
+    </div>
+  </nav>
 
   <!-- ====================================================================== -->
   <!-- FOOTER -->
@@ -1462,7 +1300,7 @@
   </footer>
 
   <!-- Main Portfolio Engine (Cache-Busted) -->
-  <script src="assets/js/main.js?v=2.1"></script>
+  <script src="assets/js/main.js?v=20261006-sidenav"></script>
 
   <!-- Inline Fey-Style Expandable Accordion Engine -->
   <script>
@@ -1551,70 +1389,12 @@
         }
       }
 
-      function initFloatingNav() {
-        const nav = document.getElementById('floatingScrollNav');
-        if (!nav) return;
-
-        const links = nav.querySelectorAll('.scroll-nav-link');
-        if (!links.length) return;
-
-        const sectionIds = ['hero', 'visuals', 'systems', 'growth', 'work', 'vault', 'contact'];
-        const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
-
-        const updateActive = () => {
-          const scrollPos = window.scrollY + window.innerHeight * 0.35;
-
-          let currentSectionId = 'hero';
-          sections.forEach(sec => {
-            const top = sec.offsetTop;
-            if (scrollPos >= top) {
-              currentSectionId = sec.id;
-            }
-          });
-
-          links.forEach(link => {
-            const target = link.getAttribute('data-target');
-            const svg = link.querySelector('svg');
-
-            if (target === currentSectionId) {
-              link.classList.add('bg-white', 'text-black', 'shadow-lg', 'scale-110');
-              link.classList.remove('text-zinc-400', 'hover:bg-white/10');
-              if (svg && !svg.classList.contains('text-vibrant-red')) {
-                svg.classList.add('text-black');
-              }
-            } else {
-              link.classList.remove('bg-white', 'text-black', 'shadow-lg', 'scale-110');
-              link.classList.add('text-zinc-400', 'hover:bg-white/10');
-              if (svg && !svg.classList.contains('text-vibrant-red')) {
-                svg.classList.remove('text-black');
-              }
-            }
-          });
-        };
-
-        window.addEventListener('scroll', updateActive, { passive: true });
-        updateActive();
-
-        links.forEach(link => {
-          link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('data-target');
-            const targetEl = document.getElementById(targetId);
-            if (targetEl) {
-              targetEl.scrollIntoView({ behavior: 'smooth' });
-            }
-          });
-        });
-      }
-
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
           initAccordion();
-          initFloatingNav();
         });
       } else {
         initAccordion();
-        initFloatingNav();
       }
     })();
   </script>

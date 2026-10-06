@@ -727,3 +727,87 @@ footer p[class] {
 
 /* Decorative card rotations must not widen the mobile page. */
 html { overflow-x: clip; }
+
+/* Section navigation: a quiet text rail, with space reserved beside the page. */
+.section-nav {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 60;
+  width: 152px;
+  font-family: 'Source Sans 3', sans-serif;
+}
+.section-nav-links {
+  padding: 14px 10px;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 16px;
+  background: rgba(12,12,16,.96);
+  box-shadow: 0 12px 32px rgba(0,0,0,.18);
+  max-height: calc(100dvh - 120px);
+  overflow-y: auto;
+}
+.section-nav-title {
+  margin: 0 10px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #a1a1aa;
+}
+.section-nav-link {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 9px 10px;
+  border-radius: 7px;
+  font-size: 15px;
+  line-height: 1.3;
+  color: #c8c8cf;
+  text-decoration: none;
+  border-left: 2px solid transparent;
+}
+.section-nav-link:hover { color: #fff; background: rgba(255,255,255,.06); }
+.section-nav-link[aria-current="location"] {
+  color: #fff;
+  font-weight: 600;
+  border-left-color: #ff2a3a;
+  background: rgba(255,255,255,.08);
+}
+.section-nav-link:focus-visible, .section-nav-toggle:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+.section-nav-toggle { display: none; }
+@media (min-width: 1100px) {
+  body { padding-right: 188px; }
+}
+@media (max-width: 1099px) {
+  .section-nav {
+    top: auto;
+    bottom: max(20px, env(safe-area-inset-bottom));
+    right: 16px;
+    transform: none;
+    width: 190px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    gap: 10px;
+  }
+  .section-nav.is-ready .section-nav-toggle {
+    display: block;
+    min-height: 44px;
+    padding: 10px 18px;
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 12px;
+    background: #141419;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    box-shadow: 0 8px 24px rgba(0,0,0,.3);
+  }
+  .section-nav-links { width: 100%; }
+  .section-nav.is-ready:not(.is-open) .section-nav-links { display: none; }
+  footer { padding-bottom: 100px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.scroll-smooth { scroll-behavior: auto; }
+}

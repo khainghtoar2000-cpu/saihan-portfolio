@@ -10,14 +10,13 @@
 document.addEventListener('DOMContentLoaded', () => {
   initBackgroundParticleTerrain();
   initFireEmbersOverlay();
-  initMobileNav();
   initPortfolioFilters();
   initContactForm();
   initSmoothScroll();
   initInquiryRouting();
   initEmailCopy();
   initVisualsAccordion();
-  initFloatingScrollNav();
+  initSectionNav();
 });
 
 // ============================================================================
@@ -233,53 +232,6 @@ function initBackgroundParticleTerrain() {
   }
 
   render();
-}
-
-// ============================================================================
-// 3. MOBILE NAVIGATION DRAWER
-// ============================================================================
-function initMobileNav() {
-  const menuBtn = document.getElementById('mobileMenuBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const menuLinks = document.querySelectorAll('.mobile-nav-link');
-
-  if (!menuBtn || !mobileMenu) return;
-
-  menuBtn.addEventListener('click', () => {
-    const isHidden = mobileMenu.classList.contains('hidden') || mobileMenu.style.display === 'none';
-    if (isHidden) {
-      mobileMenu.style.display = 'block';
-      mobileMenu.classList.remove('hidden');
-      menuBtn.setAttribute('aria-expanded', 'true');
-      menuBtn.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      `;
-    } else {
-      mobileMenu.style.display = 'none';
-      mobileMenu.classList.add('hidden');
-      menuBtn.setAttribute('aria-expanded', 'false');
-      menuBtn.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      `;
-    }
-  });
-
-  menuLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.style.display = 'none';
-      mobileMenu.classList.add('hidden');
-      menuBtn.setAttribute('aria-expanded', 'false');
-      menuBtn.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      `;
-    });
-  });
 }
 
 // ============================================================================
@@ -525,7 +477,7 @@ function initSmoothScroll() {
   document.querySelectorAll('a[href*="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const rawHref = this.getAttribute('href');
-      if (!rawHref) return;
+      if (!rawHref || this.closest('.section-nav')) return;
 
       const hashIndex = rawHref.indexOf('#');
       if (hashIndex === -1) return;
@@ -735,60 +687,78 @@ function initVisualsAccordion() {
 }
 
 // ============================================================================
-// 11. FLOATING RIGHT-SIDE VERTICAL SCROLL NAVIGATION & SCROLLSPY
+// 11. RIGHT-SIDE SECTION NAVIGATION
 // ============================================================================
-function initFloatingScrollNav() {
-  const nav = document.getElementById('floatingScrollNav');
-  if (!nav) return;
+function initSectionNav() {
+  const nav = document.getElementById('sectionNav');
+  const toggle = document.getElementById('sectionNavToggle');
+  if (!nav || !toggle) return;
+  const links = [...nav.querySelectorAll('.section-nav-link')];
+  const sections = links.map(link => document.querySelector(link.getAttribute('href')));
+  const desktop = window.matchMedia('(min-width: 1100px)');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  nav.classList.add('is-ready');
 
-  const links = nav.querySelectorAll('.scroll-nav-link');
-  if (!links.length) return;
+  const setOpen = (open) => {
+    nav.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.textContent = open ? 'Close' : 'Sections';
+  };
+  toggle.addEventListener('click', () => setOpen(!nav.classList.contains('is-open')));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && nav.classList.contains('is-open')) {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+  document.addEventListener('pointerdown', event => {
+    if (!nav.contains(event.target)) setOpen(false);
+  });
+  nav.addEventListener('focusout', event => {
+    if (!nav.contains(event.relatedTarget)) setOpen(false);
+  });
+  desktop.addEventListener('change', () => {
+    if (!desktop.matches && nav.contains(document.activeElement)) toggle.focus();
+    setOpen(false);
+  });
 
-  const sectionIds = ['hero', 'visuals', 'systems', 'growth', 'work', 'vault', 'contact'];
-  const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
-
+  const headerHeight = () => document.querySelector('header').getBoundingClientRect().height;
   const updateActive = () => {
-    const scrollPos = window.scrollY + window.innerHeight * 0.35;
-
-    let currentSectionId = 'hero';
-    sections.forEach(sec => {
-      const top = sec.offsetTop;
-      if (scrollPos >= top) {
-        currentSectionId = sec.id;
-      }
+    let active = 0;
+    sections.forEach((section, index) => {
+      if (section && section.getBoundingClientRect().top <= headerHeight() + 40) active = index;
     });
-
-    links.forEach(link => {
-      const target = link.getAttribute('data-target');
-      if (target === currentSectionId) {
-        link.classList.add('bg-white', 'text-black', 'shadow-lg', 'scale-110');
-        link.classList.remove('text-zinc-400', 'hover:bg-white/10');
-        const svg = link.querySelector('svg');
-        if (svg && !svg.classList.contains('text-vibrant-red')) {
-          svg.classList.add('text-black');
-        }
-      } else {
-        link.classList.remove('bg-white', 'text-black', 'shadow-lg', 'scale-110');
-        link.classList.add('text-zinc-400', 'hover:bg-white/10');
-        const svg = link.querySelector('svg');
-        if (svg && !svg.classList.contains('text-vibrant-red')) {
-          svg.classList.remove('text-black');
-        }
-      }
+    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4) active = links.length - 1;
+    links.forEach((link, index) => {
+      if (index === active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
     });
   };
-
-  window.addEventListener('scroll', updateActive, { passive: true });
+  let scheduled = false;
+  const scheduleUpdate = () => {
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(() => { scheduled = false; updateActive(); });
+  };
+  window.addEventListener('scroll', scheduleUpdate, { passive: true });
+  window.addEventListener('resize', scheduleUpdate);
+  window.addEventListener('load', updateActive);
+  document.fonts.ready.then(updateActive);
   updateActive();
 
-  links.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetId = link.getAttribute('data-target');
-      const targetEl = document.getElementById(targetId);
-      if (targetEl) {
-        targetEl.scrollIntoView({ behavior: 'smooth' });
-      }
+  links.forEach((link, index) => {
+    link.addEventListener('click', event => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      const section = sections[index];
+      if (!section) return;
+      event.preventDefault();
+      setOpen(false);
+      const top = section.getBoundingClientRect().top + window.scrollY - headerHeight() - 24;
+      const heading = section.querySelector('h1, h2') || section;
+      heading.setAttribute('tabindex', '-1');
+      heading.focus({ preventScroll: true });
+      history.pushState(null, '', link.getAttribute('href'));
+      window.scrollTo({ top: Math.max(0, top), behavior: reducedMotion.matches ? 'instant' : 'smooth' });
     });
   });
 }

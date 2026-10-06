@@ -702,7 +702,7 @@ function initSectionNav() {
   const setOpen = (open) => {
     nav.classList.toggle('is-open', open);
     toggle.setAttribute('aria-expanded', String(open));
-    toggle.textContent = open ? 'Close' : 'Sections';
+    toggle.setAttribute('aria-label', open ? 'Close section navigation' : 'Open section navigation');
   };
   toggle.addEventListener('click', () => setOpen(!nav.classList.contains('is-open')));
   document.addEventListener('keydown', event => {
@@ -729,6 +729,7 @@ function initSectionNav() {
       if (section && section.getBoundingClientRect().top <= headerHeight() + 40) active = index;
     });
     if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4) active = links.length - 1;
+    nav.style.setProperty('--active-y', `${30 + active * 48}px`);
     links.forEach((link, index) => {
       if (index === active) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');

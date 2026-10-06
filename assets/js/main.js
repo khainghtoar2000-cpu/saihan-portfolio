@@ -438,7 +438,7 @@ function initContactForm() {
     e.preventDefault();
 
     alertBox.classList.add('hidden');
-    alertBox.className = 'mt-6 p-4 text-xs font-mono-tech rounded-2xl border hidden';
+    alertBox.className = 'mt-6 p-4 text-xs font-label rounded-2xl border hidden';
 
     const inputs = form.querySelectorAll('.glass-input');
     inputs.forEach(input => input.classList.remove('has-error'));

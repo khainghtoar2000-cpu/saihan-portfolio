@@ -15,10 +15,10 @@ module.exports = {
         'off-white': '#f4f4f0'
       },
       fontFamily: {
-        'syne': ['Syne', 'sans-serif'],
-        'space': ['Space Grotesk', 'sans-serif'],
-        'mono-tech': ['JetBrains Mono', 'monospace'],
-        'inter': ['Inter', 'sans-serif']
+        'display': ['Manrope', 'sans-serif'],
+        'body': ['Source Sans 3', 'sans-serif'],
+        'label': ['Source Sans 3', 'sans-serif'],
+        'sans': ['Source Sans 3', 'sans-serif']
       }
     }
   },

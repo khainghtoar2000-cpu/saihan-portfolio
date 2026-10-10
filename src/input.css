@@ -881,3 +881,113 @@ html { overflow-x: clip; }
 }
 .service-action:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
 @media (prefers-reduced-motion: reduce) { .service-action { transition: none; } }
+
+/* A single poster composition introduces the photography collection. */
+.editorial-feature {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 660px;
+  margin: 0 0 64px;
+  background: #FFFFFF;
+  color: #000000;
+  border-radius: 4px;
+  container-type: inline-size;
+}
+.editorial-feature-topline, .editorial-feature-footer {
+  position: absolute;
+  left: 36px;
+  right: 36px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  z-index: 3;
+}
+.editorial-feature-topline { top: 28px; }
+.editorial-feature-footer { bottom: 28px; }
+.editorial-feature-word {
+  position: absolute;
+  left: 3%;
+  bottom: 80px;
+  color: #6D001A;
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(90px, 19cqw, 250px);
+  font-weight: 700;
+  line-height: .82;
+  letter-spacing: -.075em;
+  z-index: 0;
+  user-select: none;
+}
+.editorial-feature-photo {
+  position: absolute;
+  top: 68px;
+  left: 6%;
+  width: 53%;
+  height: 510px;
+  z-index: 1;
+  /* White negative space cuts across the photo without flattening its source. */
+  -webkit-mask-image: repeating-linear-gradient(155deg, #000 0 84px, transparent 84px 94px);
+  mask-image: repeating-linear-gradient(155deg, #000 0 84px, transparent 84px 94px);
+  clip-path: polygon(12% 0, 93% 0, 93% 30%, 100% 30%, 100% 62%, 89% 62%, 89% 100%, 0 100%, 0 72%, 7% 72%, 7% 30%, 12% 30%);
+}
+.editorial-feature-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 39%;
+  filter: grayscale(1);
+}
+.editorial-feature-copy {
+  position: relative;
+  margin: 0 5% 0 63%;
+  padding-top: 145px;
+  z-index: 2;
+}
+.editorial-feature figcaption {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(32px, 4.4cqw, 58px);
+  font-weight: 600;
+  letter-spacing: -.045em;
+  line-height: 1.1;
+}
+.editorial-feature figcaption span { color: #6D001A; }
+.editorial-feature-copy p {
+  margin-top: 26px;
+  font-size: 17px;
+  line-height: 1.5;
+  color: #000000;
+}
+.editorial-feature-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 22px;
+  border-bottom: 1px solid #6D001A;
+  font-size: 15px;
+  font-weight: 600;
+  color: #6D001A;
+}
+.editorial-feature-link:hover { border-bottom-width: 2px; }
+.editorial-feature-link:focus-visible { outline: 2px solid #6D001A; outline-offset: 5px; }
+@media (max-width: 767px) {
+  .editorial-feature { min-height: 730px; margin-bottom: 40px; }
+  .editorial-feature-topline, .editorial-feature-footer { left: 20px; right: 20px; font-size: 12px; }
+  .editorial-feature-topline { top: 20px; }
+  .editorial-feature-topline span:last-child { max-width: 110px; text-align: right; }
+  .editorial-feature-photo { top: 66px; left: 6%; width: 88%; height: 405px; }
+  .editorial-feature-word { bottom: auto; top: 397px; font-size: 23cqw; left: 2%; }
+  .editorial-feature-copy { margin: 0 24px; padding-top: 486px; }
+  .editorial-feature figcaption { font-size: 38px; }
+  .editorial-feature figcaption br { display: none; }
+  .editorial-feature-copy p { margin-top: 14px; font-size: 16px; }
+  .editorial-feature-copy p br { display: none; }
+  .editorial-feature-link { margin-top: 10px; }
+  .editorial-feature-footer { bottom: 20px; font-size: 11px; }
+}
+@media (max-width: 374px) {
+  .editorial-feature figcaption { font-size: 32px; }
+  .editorial-feature-copy { margin: 0 20px; }
+}

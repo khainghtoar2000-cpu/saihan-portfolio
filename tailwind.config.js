@@ -8,11 +8,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'deep-black': '#070709',
-        'glass-surface': 'rgba(18, 18, 24, 0.55)',
-        'vibrant-red': '#ff2a3a',
-        'crimson-red': '#d90429',
-        'off-white': '#f4f4f0'
+        'deep-black': '#000000',
+        'glass-surface': 'rgba(0, 0, 0, 0.55)',
+        'burgundy': '#6D001A',
+        'off-white': '#FFFFFF',
+        zinc: { 50:'#fafafa', 100:'#f5f5f5', 200:'#e5e5e5', 300:'#d4d4d4', 400:'#a3a3a3', 500:'#737373', 600:'#525252', 700:'#404040', 800:'#262626', 900:'#171717', 950:'#0a0a0a' }
       },
       fontFamily: {
         'display': ['Manrope', 'sans-serif'],

@@ -75,7 +75,7 @@ function initFireEmbersOverlay() {
       phase2: Math.random() * Math.PI * 2,
       maxAlpha: Math.random() * 0.6 + 0.25,
       alpha: 0,
-      colorType: Math.random() // 0-0.45: red, 0.45-0.8: orange, 0.8-1: gold spark
+      colorType: Math.random() // Burgundy particles with occasional white highlights
     };
   }
 
@@ -123,17 +123,17 @@ function initFireEmbersOverlay() {
         continue;
       }
 
-      // Warm Fire Ember Color Palette
+      // Burgundy and white particle palette
       let fillCol, glowCol;
       if (e.colorType < 0.45) {
-        fillCol = `rgba(255, 42, 58, ${e.alpha.toFixed(3)})`;
-        glowCol = `rgba(255, 20, 30, ${(e.alpha * 0.4).toFixed(3)})`;
+        fillCol = `rgba(109, 0, 26, ${e.alpha.toFixed(3)})`;
+        glowCol = `rgba(109, 0, 26, ${(e.alpha * 0.4).toFixed(3)})`;
       } else if (e.colorType < 0.8) {
-        fillCol = `rgba(255, 120, 40, ${e.alpha.toFixed(3)})`;
-        glowCol = `rgba(255, 80, 20, ${(e.alpha * 0.4).toFixed(3)})`;
+        fillCol = `rgba(109, 0, 26, ${e.alpha.toFixed(3)})`;
+        glowCol = `rgba(109, 0, 26, ${(e.alpha * 0.4).toFixed(3)})`;
       } else {
-        fillCol = `rgba(255, 220, 95, ${e.alpha.toFixed(3)})`;
-        glowCol = `rgba(255, 160, 40, ${(e.alpha * 0.5).toFixed(3)})`;
+        fillCol = `rgba(255, 255, 255, ${e.alpha.toFixed(3)})`;
+        glowCol = `rgba(109, 0, 26, ${(e.alpha * 0.5).toFixed(3)})`;
       }
 
       // Soft ambient ember blur halo
@@ -219,7 +219,7 @@ function initBackgroundParticleTerrain() {
         const pSize = 0.6 + depthFactor * 1.3;
         const pAlpha = 0.05 + depthFactor * 0.4;
 
-        ctx.fillStyle = `rgba(244, 244, 240, ${pAlpha.toFixed(2)})`;
+        ctx.fillStyle = `rgba(255, 255, 255, ${pAlpha.toFixed(2)})`;
         ctx.beginPath();
         ctx.arc(xBase, particleY, pSize, 0, Math.PI * 2);
         ctx.fill();
@@ -452,9 +452,9 @@ function initContactForm() {
     alertBox.classList.remove('hidden');
 
     if (type === 'success') {
-      alertBox.classList.add('bg-black/70', 'text-white', 'border-red-500/50');
+      alertBox.classList.add('bg-black/70', 'text-white', 'border-burgundy/50');
     } else if (type === 'error') {
-      alertBox.classList.add('bg-black/70', 'text-red-400', 'border-red-500');
+      alertBox.classList.add('bg-black/70', 'text-white', 'border-burgundy');
     } else {
       alertBox.classList.add('bg-black/70', 'text-zinc-300', 'border-white/20');
     }
@@ -529,9 +529,9 @@ function initSmoothScroll() {
         // Brief focus glow if scrolling to a service card
         if (['#visuals', '#systems', '#growth'].includes(hashPart)) {
           const cardInner = targetEl.querySelector('.glass-card') || targetEl;
-          cardInner.classList.add('border-vibrant-red');
+          cardInner.classList.add('border-burgundy');
           setTimeout(() => {
-            cardInner.classList.remove('border-vibrant-red');
+            cardInner.classList.remove('border-burgundy');
           }, 1400);
         }
       }
@@ -572,8 +572,8 @@ function initInquiryRouting() {
         setTimeout(() => {
           if (nameInput) {
             nameInput.focus();
-            nameInput.classList.add('border-vibrant-red');
-            setTimeout(() => nameInput.classList.remove('border-vibrant-red'), 1500);
+            nameInput.classList.add('border-burgundy');
+            setTimeout(() => nameInput.classList.remove('border-burgundy'), 1500);
           } else if (messageInput) {
             messageInput.focus();
           }
@@ -595,7 +595,7 @@ function initEmailCopy() {
       
       navigator.clipboard.writeText(email).then(() => {
         const originalText = btn.innerHTML;
-        btn.innerHTML = `<span class="text-red-400">COPIED</span>`;
+        btn.innerHTML = `<span class="text-white">COPIED</span>`;
         setTimeout(() => {
           btn.innerHTML = originalText;
         }, 2000);

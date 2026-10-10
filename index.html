@@ -28,11 +28,11 @@
       theme: {
         extend: {
           colors: {
-            'deep-black': '#070709',
-            'glass-surface': 'rgba(18, 18, 24, 0.55)',
-            'vibrant-red': '#ff2a3a',
-            'crimson-red': '#d90429',
-            'off-white': '#f4f4f0'
+            'deep-black': '#000000',
+            'glass-surface': 'rgba(0, 0, 0, 0.55)',
+            'burgundy': '#6D001A',
+                'off-white': '#FFFFFF',
+            zinc: { 50:'#fafafa', 100:'#f5f5f5', 200:'#e5e5e5', 300:'#d4d4d4', 400:'#a3a3a3', 500:'#737373', 600:'#525252', 700:'#404040', 800:'#262626', 900:'#171717', 950:'#0a0a0a' }
           },
           fontFamily: {
             'display': ['Manrope', 'sans-serif'],
@@ -46,7 +46,7 @@
   </script>
 
   <!-- Compiled Local Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261010-cleanup" />
+  <link rel="stylesheet" href="assets/css/style.css?v=20261010-burgundy" />
 
   <!-- Critical Fey Accordion Overrides -->
   <style>
@@ -82,7 +82,7 @@
     }
   </style>
 </head>
-<body class="bg-deep-black text-off-white min-h-screen flex flex-col antialiased selection:bg-vibrant-red selection:text-white relative">
+<body class="bg-deep-black text-off-white min-h-screen flex flex-col antialiased selection:bg-burgundy selection:text-white relative">
 
   <!-- ====================================================================== -->
   <!-- AMBIENT CORNER RADIAL GRADIENT SPHERES & PARTICLE TERRAIN (IMAGE 2 REF) -->
@@ -104,8 +104,8 @@
       
       <!-- Brand Logo -->
       <a href="#" class="flex items-center gap-2 group">
-        <span class="font-display font-bold text-2xl tracking-tight text-white group-hover:text-vibrant-red transition-colors uppercase">
-          SAIHAN<span class="text-vibrant-red">.</span>
+        <span class="font-display font-bold text-2xl tracking-tight text-white group-hover:text-white transition-colors uppercase">
+          SAIHAN<span class="text-white">.</span>
         </span>
       </a>
 
@@ -128,10 +128,10 @@
               
               <!-- Main Stark Headline (Fixed Wrapping & Zero Word-Breaks) -->
               <h1 class="font-display font-bold text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight text-white uppercase leading-none sm:leading-[1.0] hero-stark-headline">
-                <span class="block whitespace-nowrap">Saihan<span class="text-vibrant-red">.</span></span>
+                <span class="block whitespace-nowrap">Saihan<span class="text-white">.</span></span>
                 <span class="block whitespace-nowrap text-zinc-400">Visuals.</span>
                 <span class="block whitespace-nowrap text-white">Systems.</span>
-                <span class="block whitespace-nowrap text-vibrant-red">Growth.</span>
+                <span class="block whitespace-nowrap text-white">Growth.</span>
               </h1>
 
               <!-- Updated Confident Subtext -->
@@ -191,7 +191,7 @@
               <div class="relative aspect-[3/4] sm:aspect-[4/5] w-full overflow-hidden rounded-2xl bg-zinc-950 border border-white/15 shadow-2xl group">
                 
                 <!-- Pure CSS Ambient Glow -->
-                <div class="absolute -inset-1 bg-gradient-to-tr from-vibrant-red/20 via-transparent to-white/10 rounded-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                <div class="absolute -inset-1 bg-gradient-to-tr from-burgundy/20 via-transparent to-white/10 rounded-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
 
                 <!-- User's Editorial Portrait Image (Static & Clean) -->
                 <img 
@@ -259,8 +259,8 @@
             <!-- Under-layer Deck Card 1 (Middle - Fans Right) -->
             <div class="absolute inset-0 rounded-[1.75rem] bg-zinc-900/60 border border-white/10 shadow-xl transform rotate-2 sm:rotate-3 translate-x-2 translate-y-1.5 opacity-60 group-hover/stack:rotate-6 group-hover/stack:translate-x-4 group-hover/stack:translate-y-2 group-hover/stack:opacity-90 transition-all duration-300 ease-out pointer-events-none overflow-hidden">
               <div class="p-6 h-full flex flex-col justify-between">
-                <div class="font-label text-xs text-vibrant-red/80 uppercase flex items-center gap-1.5">
-                  <span class="w-1.5 h-1.5 rounded-full bg-vibrant-red"></span>
+                <div class="font-label text-xs text-white/80 uppercase flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-burgundy"></span>
                   <span>FIG. 01A // EDITORIAL</span>
                 </div>
                 <div class="font-label text-xs text-zinc-400">
@@ -272,7 +272,7 @@
             <!-- Main Top Service Card -->
             <div class="relative z-10 glass-card p-8 flex flex-col justify-between group h-full transform group-hover/stack:-translate-y-2 transition-all duration-300 ease-out">
               <div class="space-y-6">
-                <h3 class="font-display font-bold text-2xl text-white uppercase group-hover:text-vibrant-red transition-colors">
+                <h3 class="font-display font-bold text-2xl text-white uppercase group-hover:text-white transition-colors">
                   Commercial Visuals & Media
                 </h3>
 
@@ -282,19 +282,19 @@
 
                 <ul class="space-y-3 font-label text-sm text-zinc-300 pt-2">
                   <li class="flex items-start gap-2.5">
-                    <span class="text-vibrant-red font-bold">&bull;</span>
+                    <span class="text-white font-bold">&bull;</span>
                     <span>Commercial & Lookbook Photography</span>
                   </li>
                   <li class="flex items-start gap-2.5">
-                    <span class="text-vibrant-red font-bold">&bull;</span>
+                    <span class="text-white font-bold">&bull;</span>
                     <span>4K Video Direction & Social Reels</span>
                   </li>
                   <li class="flex items-start gap-2.5">
-                    <span class="text-vibrant-red font-bold">&bull;</span>
+                    <span class="text-white font-bold">&bull;</span>
                     <span>Brand Identity & Editorial Typography</span>
                   </li>
                   <li class="flex items-start gap-2.5">
-                    <span class="text-vibrant-red font-bold">&bull;</span>
+                    <span class="text-white font-bold">&bull;</span>
                     <span>Color Grading & High-Res Retouching</span>
                   </li>
                 </ul>
@@ -330,8 +330,8 @@
             <!-- Under-layer Deck Card 1 (Middle - Fans Right) -->
             <div class="absolute inset-0 rounded-[1.75rem] bg-zinc-900/60 border border-white/10 shadow-xl transform rotate-2 sm:rotate-4 translate-x-2 translate-y-1.5 opacity-60 group-hover/stack:rotate-6 group-hover/stack:translate-x-4 group-hover/stack:translate-y-2 group-hover/stack:opacity-90 transition-all duration-300 ease-out pointer-events-none overflow-hidden">
               <div class="p-6 h-full flex flex-col justify-between">
-                <div class="font-label text-xs text-vibrant-red/80 uppercase flex items-center gap-1.5">
-                  <span class="w-1.5 h-1.5 rounded-full bg-vibrant-red"></span>
+                <div class="font-label text-xs text-white/80 uppercase flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-burgundy"></span>
                   <span>MYSQL 8.0 // INNODB</span>
                 </div>
                 <div class="font-label text-xs text-zinc-400">
@@ -343,7 +343,7 @@
             <!-- Main Top Service Card -->
             <div class="relative z-10 glass-card p-8 flex flex-col justify-between group h-full transform group-hover/stack:-translate-y-2 transition-all duration-300 ease-out">
               <div class="space-y-6">
-                <h3 class="font-display font-bold text-2xl text-white uppercase group-hover:text-vibrant-red transition-colors">
+                <h3 class="font-display font-bold text-2xl text-white uppercase group-hover:text-white transition-colors">
                   Tech & Database Systems
                 </h3>
 
@@ -353,19 +353,19 @@
 
                 <ul class="space-y-3 font-label text-sm text-zinc-300 pt-2">
                   <li class="flex items-start gap-2.5">
-                    <span class="text-vibrant-red font-bold">&bull;</span>
+                    <span class="text-white font-bold">&bull;</span>
                     <span>Full-Stack Web Applications</span>
                   </li>
                   <li class="flex items-start gap-2.5">
-                    <span class="text-vibrant-red font-bold">&bull;</span>
+                    <span class="text-white font-bold">&bull;</span>
                     <span>MySQL Relational Database Architecture</span>
                   </li>
                   <li class="flex items-start gap-2.5">
-                    <span class="text-vibrant-red font-bold">&bull;</span>
+                    <span class="text-white font-bold">&bull;</span>
                     <span>PHP 8+ RESTful APIs & Integrations</span>
                   </li>
                   <li class="flex items-start gap-2.5">
-                    <span class="text-vibrant-red font-bold">&bull;</span>
+                    <span class="text-white font-bold">&bull;</span>
                     <span>Admin Portals & Operations Tooling</span>
                   </li>
                 </ul>
@@ -402,8 +402,8 @@
             <!-- Under-layer Deck Card 1 (Middle - Fans Right) -->
             <div class="absolute inset-0 rounded-[1.75rem] bg-zinc-900/60 border border-white/10 shadow-xl transform rotate-2 sm:rotate-4 translate-x-2 translate-y-1.5 opacity-60 group-hover/stack:rotate-6 group-hover/stack:translate-x-4 group-hover/stack:translate-y-2 group-hover/stack:opacity-90 transition-all duration-300 ease-out pointer-events-none overflow-hidden">
               <div class="p-6 h-full flex flex-col justify-between">
-                <div class="font-label text-xs text-vibrant-red/80 uppercase flex items-center gap-1.5">
-                  <span class="w-1.5 h-1.5 rounded-full bg-vibrant-red"></span>
+                <div class="font-label text-xs text-white/80 uppercase flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-burgundy"></span>
                   <span>BLENDED ROAS // 4.6X</span>
                 </div>
                 <div class="font-label text-xs text-zinc-400">
@@ -415,7 +415,7 @@
             <!-- Main Top Service Card -->
             <div class="relative z-10 glass-card p-8 flex flex-col justify-between group h-full transform group-hover/stack:-translate-y-2 transition-all duration-300 ease-out">
               <div class="space-y-6">
-                <h3 class="font-display font-bold text-2xl text-white uppercase group-hover:text-vibrant-red transition-colors">
+                <h3 class="font-display font-bold text-2xl text-white uppercase group-hover:text-white transition-colors">
                   Digital Marketing & Growth
                 </h3>
 
@@ -425,19 +425,19 @@
 
                 <ul class="space-y-3 font-label text-sm text-zinc-300 pt-2">
                   <li class="flex items-start gap-2.5">
-                    <span class="text-vibrant-red font-bold">&bull;</span>
+                    <span class="text-white font-bold">&bull;</span>
                     <span>Meta Paid Ad Strategy & Campaigns</span>
                   </li>
                   <li class="flex items-start gap-2.5">
-                    <span class="text-vibrant-red font-bold">&bull;</span>
+                    <span class="text-white font-bold">&bull;</span>
                     <span>Conversion Rate Optimization (CRO)</span>
                   </li>
                   <li class="flex items-start gap-2.5">
-                    <span class="text-vibrant-red font-bold">&bull;</span>
+                    <span class="text-white font-bold">&bull;</span>
                     <span>Organic Content Retainers & Distribution</span>
                   </li>
                   <li class="flex items-start gap-2.5">
-                    <span class="text-vibrant-red font-bold">&bull;</span>
+                    <span class="text-white font-bold">&bull;</span>
                     <span>Analytics Tracking & Funnel Attribution</span>
                   </li>
                 </ul>
@@ -701,7 +701,7 @@
               <p class="text-zinc-300 text-base leading-relaxed">
                 Saihan leads end-to-end commercial visual direction backed by a dedicated in-house engineering and development team. From brand visuals to complex enterprise web systems, we deliver complete creative and technical execution under one unified vision.
               </p>
-              <div class="border-l-2 border-vibrant-red pl-6 py-2 text-sm text-zinc-200 font-body">
+              <div class="border-l-2 border-burgundy pl-6 py-2 text-sm text-zinc-200 font-body">
                 "Zero translation loss between the visual director, the engineering team, and the media buyer."
               </div>
             </div>
@@ -744,7 +744,7 @@
         <!-- Header: Minimalist Stark Typography (Image 1 Style) -->
         <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14 space-y-3">
           <h2 class="font-display font-bold text-3xl sm:text-5xl text-white uppercase tracking-tight">
-            Commercial visuals & media<span class="text-vibrant-red">.</span>
+            Commercial visuals & media<span class="text-white">.</span>
           </h2>
           <p class="text-zinc-400 font-body text-sm sm:text-sm leading-relaxed">
             A curated collection of commercial visual campaigns, editorial lookbooks, low-light stage captures, and ad concepts.
@@ -796,7 +796,7 @@
 
               <div class="space-y-3 max-w-xl">
                 <div>
-                  <div class="font-label text-sm text-vibrant-red uppercase tracking-wide mb-1">TAILORED OUTERWEAR & VINYL TEXTURES</div>
+                  <div class="font-label text-sm text-white uppercase tracking-wide mb-1">TAILORED OUTERWEAR & VINYL TEXTURES</div>
                   <h3 class="font-display font-bold text-2xl sm:text-4xl text-white uppercase tracking-tight">Urban industrial fashion</h3>
                 </div>
                 <p class="text-zinc-300 font-body text-sm sm:text-sm leading-relaxed">
@@ -845,7 +845,7 @@
 
               <div class="space-y-3 max-w-xl">
                 <div>
-                  <div class="font-label text-sm text-vibrant-red uppercase tracking-wide mb-1">NATURAL LIGHT & CANDID MOTION</div>
+                  <div class="font-label text-sm text-white uppercase tracking-wide mb-1">NATURAL LIGHT & CANDID MOTION</div>
                   <h3 class="font-display font-bold text-2xl sm:text-4xl text-white uppercase tracking-tight">Golden hour companion</h3>
                 </div>
                 <p class="text-zinc-300 font-body text-sm sm:text-sm leading-relaxed">
@@ -893,7 +893,7 @@
 
               <div class="space-y-3 max-w-xl">
                 <div>
-                  <div class="font-label text-sm text-vibrant-red uppercase tracking-wide mb-1">CULINARY CONTENT & SOCIAL SCALING</div>
+                  <div class="font-label text-sm text-white uppercase tracking-wide mb-1">CULINARY CONTENT & SOCIAL SCALING</div>
                   <h3 class="font-display font-bold text-2xl sm:text-4xl text-white uppercase tracking-tight">OGGI Restaurant</h3>
                 </div>
                 <p class="text-zinc-300 font-body text-sm sm:text-sm leading-relaxed">
@@ -941,7 +941,7 @@
 
               <div class="space-y-3 max-w-xl">
                 <div>
-                  <div class="font-label text-sm text-vibrant-red uppercase tracking-wide mb-1">HIGH-ENERGY CONCERT PHOTOGRAPHY & MEDIA</div>
+                  <div class="font-label text-sm text-white uppercase tracking-wide mb-1">HIGH-ENERGY CONCERT PHOTOGRAPHY & MEDIA</div>
                   <h3 class="font-display font-bold text-2xl sm:text-4xl text-white uppercase tracking-tight">Patong Beach Festival</h3>
                 </div>
                 <p class="text-zinc-300 font-body text-sm sm:text-sm leading-relaxed">
@@ -990,7 +990,7 @@
 
               <div class="space-y-3 max-w-xl">
                 <div>
-                  <div class="font-label text-sm text-vibrant-red uppercase tracking-wide mb-1">URBAN FASHION & LIFESTYLE DIRECTION</div>
+                  <div class="font-label text-sm text-white uppercase tracking-wide mb-1">URBAN FASHION & LIFESTYLE DIRECTION</div>
                   <h3 class="font-display font-bold text-2xl sm:text-4xl text-white uppercase tracking-tight">Urban apparel / Sunglasses</h3>
                 </div>
                 <p class="text-zinc-300 font-body text-sm sm:text-sm leading-relaxed">
@@ -1038,7 +1038,7 @@
 
               <div class="space-y-3 max-w-xl">
                 <div>
-                  <div class="font-label text-sm text-vibrant-red uppercase tracking-wide mb-1">DOCUMENTARY STREET & GRAIN AESTHETICS</div>
+                  <div class="font-label text-sm text-white uppercase tracking-wide mb-1">DOCUMENTARY STREET & GRAIN AESTHETICS</div>
                   <h3 class="font-display font-bold text-2xl sm:text-4xl text-white uppercase tracking-tight">35mm analog archive</h3>
                 </div>
                 <p class="text-zinc-300 font-body text-sm sm:text-sm leading-relaxed">
@@ -1076,10 +1076,10 @@
             href="https://wa.me/66642835922?text=Hi%20Saihan,%20I'd%20like%20to%20discuss%20a%20project." 
             target="_blank" 
             rel="noopener noreferrer" 
-            class="liquid-action-card p-5 flex items-center justify-between hover:border-emerald-500/60 hover:bg-emerald-950/25 transition-all group"
+            class="liquid-action-card p-5 flex items-center justify-between hover:border-burgundy hover:bg-burgundy/25 transition-all group"
           >
             <div class="flex items-center gap-3.5">
-              <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center border border-emerald-500/40 shadow-lg group-hover:scale-110 transition-transform">
+              <div class="w-10 h-10 rounded-xl bg-burgundy/60 text-white flex items-center justify-center border border-white/20 shadow-lg group-hover:scale-110 transition-transform">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24">
                   <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
                 </svg>
@@ -1087,21 +1087,21 @@
               <div>
                 <div class="font-body text-sm font-bold text-white uppercase flex items-center gap-2">
                   <span>WHATSAPP / CALL / LINE</span>
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
                 </div>
                 <div class="font-label text-xs text-zinc-400">+66 64 283 5922 &bull; Direct</div>
               </div>
             </div>
-            <span class="text-emerald-400 font-label text-sm group-hover:translate-x-1 transition-transform font-bold">&rarr;</span>
+            <span class="text-white font-label text-sm group-hover:translate-x-1 transition-transform font-bold">&rarr;</span>
           </a>
 
           <!-- Telegram / Direct Email Button -->
           <a 
             href="mailto:khainghtoar2000@gmail.com?subject=Project%20Inquiry%20-%20Saihan" 
-            class="liquid-action-card p-5 flex items-center justify-between hover:border-vibrant-red/60 hover:bg-red-950/25 transition-all group"
+            class="liquid-action-card p-5 flex items-center justify-between hover:border-burgundy/60 hover:bg-burgundy/25 transition-all group"
           >
             <div class="flex items-center gap-3.5">
-              <div class="w-10 h-10 rounded-xl bg-vibrant-red/20 text-vibrant-red flex items-center justify-center border border-vibrant-red/40 shadow-lg group-hover:scale-110 transition-transform">
+              <div class="w-10 h-10 rounded-xl bg-burgundy/20 text-white flex items-center justify-center border border-burgundy/40 shadow-lg group-hover:scale-110 transition-transform">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
@@ -1113,7 +1113,7 @@
                 <div class="font-label text-xs text-zinc-400">khainghtoar2000@gmail.com</div>
               </div>
             </div>
-            <span class="text-vibrant-red font-label text-sm group-hover:translate-x-1 transition-transform font-bold">&rarr;</span>
+            <span class="text-white font-label text-sm group-hover:translate-x-1 transition-transform font-bold">&rarr;</span>
           </a>
 
         </div>
@@ -1222,7 +1222,7 @@
         
         <div>
           <div class="font-display font-bold text-xl text-white uppercase">
-            SAIHAN<span class="text-vibrant-red">.</span>
+            SAIHAN<span class="text-white">.</span>
           </div>
           <p class="text-zinc-400 text-xs mt-1">
             Commercial Photography &bull; Full-Stack Systems &bull; Performance Growth
@@ -1257,7 +1257,7 @@
   </footer>
 
   <!-- Main Portfolio Engine (Cache-Busted) -->
-  <script src="assets/js/main.js?v=20261010-cleanup"></script>
+  <script src="assets/js/main.js?v=20261010-burgundy"></script>
 
   <!-- Inline Fey-Style Expandable Accordion Engine -->
   <script>
@@ -1285,7 +1285,7 @@
               p.style.minHeight = isDesktop ? '100%' : '480px';
               p.style.maxHeight = 'none';
               p.style.borderColor = 'rgba(255, 255, 255, 0.35)';
-              p.style.backgroundColor = 'rgba(24, 24, 27, 0.9)';
+              p.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
               p.style.cursor = 'default';
 
               if (expanded) {
@@ -1302,7 +1302,7 @@
               p.style.minHeight = isDesktop ? '100%' : '64px';
               p.style.maxHeight = isDesktop ? '100%' : '64px';
               p.style.borderColor = 'rgba(255, 255, 255, 0.12)';
-              p.style.backgroundColor = 'rgba(9, 9, 11, 0.8)';
+              p.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
               p.style.cursor = 'pointer';
 
               if (expanded) {

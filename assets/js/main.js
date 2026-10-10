@@ -240,7 +240,6 @@ function initBackgroundParticleTerrain() {
 function initPortfolioFilters() {
   const filterButtons = document.querySelectorAll('.portfolio-filter-btn');
   const projectCards = document.querySelectorAll('.portfolio-project-card');
-  const activeCountEl = document.getElementById('visibleProjectsCount');
 
   if (!filterButtons.length || !projectCards.length) return;
 
@@ -254,8 +253,6 @@ function initPortfolioFilters() {
 
       btn.classList.add('active');
 
-      let visibleCount = 0;
-
       projectCards.forEach(card => {
         const cardCategory = card.getAttribute('data-category');
         const matches = selectedCategory === 'all' || cardCategory === selectedCategory;
@@ -263,16 +260,12 @@ function initPortfolioFilters() {
         if (matches) {
           card.style.display = 'flex';
           card.classList.remove('hidden');
-          visibleCount++;
         } else {
           card.classList.add('hidden');
           card.style.display = 'none';
         }
       });
 
-      if (activeCountEl) {
-        activeCountEl.textContent = `[SHOWING ${visibleCount} RELEASES]`;
-      }
     });
   });
 }

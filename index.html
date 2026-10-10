@@ -46,7 +46,7 @@
   </script>
 
   <!-- Compiled Local Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261006-glassnav" />
+  <link rel="stylesheet" href="assets/css/style.css?v=20261010-cleanup" />
 
   <!-- Critical Fey Accordion Overrides -->
   <style>
@@ -228,7 +228,6 @@
         <!-- Section Header -->
         <div class="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <div class="font-label text-sm text-vibrant-red uppercase tracking-wide mb-2">[01-03] DISCIPLINES</div>
             <h2 class="font-display font-bold text-4xl sm:text-6xl text-white uppercase tracking-tight">
               Core services.
             </h2>
@@ -273,11 +272,6 @@
             <!-- Main Top Service Card -->
             <div class="relative z-10 glass-card p-8 flex flex-col justify-between group h-full transform group-hover/stack:-translate-y-2 transition-all duration-300 ease-out">
               <div class="space-y-6">
-                <div class="flex items-center justify-between border-b border-white/10 pb-4">
-                  <span class="font-label text-sm text-zinc-400 uppercase">SECTION 01</span>
-                  <span class="glass-badge font-body text-sm font-bold text-white">VISUALS</span>
-                </div>
-
                 <h3 class="font-display font-bold text-2xl text-white uppercase group-hover:text-vibrant-red transition-colors">
                   Commercial Visuals & Media
                 </h3>
@@ -306,15 +300,11 @@
                 </ul>
               </div>
               <div class="pt-6 mt-6 border-t border-white/10 flex flex-col gap-3">
-                <div class="flex items-center justify-between text-sm font-label">
-                  <span class="text-zinc-400">PROJECT-BASED // RETAINER</span>
-                  <span class="text-vibrant-red font-bold">ACTIVE</span>
-                </div>
                 <a 
                   href="#vault" 
-                  class="glass-btn-secondary w-full py-3.5 text-sm font-label uppercase font-bold justify-center tracking-wider flex items-center gap-2"
+                  class="service-action"
                 >
-                  <span>INQUIRE &bull; VIEW WORKS</span>
+                  <span>View photography</span>
                 </a>
               </div>
             </div>
@@ -353,11 +343,6 @@
             <!-- Main Top Service Card -->
             <div class="relative z-10 glass-card p-8 flex flex-col justify-between group h-full transform group-hover/stack:-translate-y-2 transition-all duration-300 ease-out">
               <div class="space-y-6">
-                <div class="flex items-center justify-between border-b border-white/10 pb-4">
-                  <span class="font-label text-sm text-zinc-400 uppercase">SECTION 02</span>
-                  <span class="glass-badge font-body text-sm font-bold text-white">SYSTEMS</span>
-                </div>
-
                 <h3 class="font-display font-bold text-2xl text-white uppercase group-hover:text-vibrant-red transition-colors">
                   Tech & Database Systems
                 </h3>
@@ -386,17 +371,12 @@
                 </ul>
               </div>
               <div class="pt-6 mt-6 border-t border-white/10 flex flex-col gap-3">
-                <div class="flex items-center justify-between text-sm font-label">
-                  <span class="text-zinc-400">CUSTOM BUILD // SPRINT</span>
-                  <span class="text-vibrant-red font-bold">ACTIVE</span>
-                </div>
                 <a 
                   href="#contact" 
                   data-inquiry-msg="Inquiring about Tech & Database Systems custom build." 
-                  class="service-inquire-btn glass-btn-secondary w-full py-3.5 text-sm font-label uppercase font-bold justify-center tracking-wider"
+                  class="service-inquire-btn service-action"
                 >
-                  <span>INQUIRE</span>
-                  <span>&rarr;</span>
+                  <span>Discuss a project</span>
                 </a>
               </div>
             </div>
@@ -435,11 +415,6 @@
             <!-- Main Top Service Card -->
             <div class="relative z-10 glass-card p-8 flex flex-col justify-between group h-full transform group-hover/stack:-translate-y-2 transition-all duration-300 ease-out">
               <div class="space-y-6">
-                <div class="flex items-center justify-between border-b border-white/10 pb-4">
-                  <span class="font-label text-sm text-zinc-400 uppercase">SECTION 03</span>
-                  <span class="glass-badge font-body text-sm font-bold text-white">GROWTH</span>
-                </div>
-
                 <h3 class="font-display font-bold text-2xl text-white uppercase group-hover:text-vibrant-red transition-colors">
                   Digital Marketing & Growth
                 </h3>
@@ -468,17 +443,12 @@
                 </ul>
               </div>
               <div class="pt-6 mt-6 border-t border-white/10 flex flex-col gap-3">
-                <div class="flex items-center justify-between text-sm font-label">
-                  <span class="text-zinc-400">MONTHLY // PERFORMANCE</span>
-                  <span class="text-vibrant-red font-bold">ACTIVE</span>
-                </div>
                 <a 
                   href="#contact" 
                   data-inquiry-msg="Inquiring about Digital Marketing & Performance Growth retainers." 
-                  class="service-inquire-btn glass-btn-secondary w-full py-3.5 text-sm font-label uppercase font-bold justify-center tracking-wider"
+                  class="service-inquire-btn service-action"
                 >
-                  <span>INQUIRE</span>
-                  <span>&rarr;</span>
+                  <span>Discuss a project</span>
                 </a>
               </div>
             </div>
@@ -499,7 +469,6 @@
         <!-- Gallery Header & Filters -->
         <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
           <div>
-            <div class="font-label text-sm text-vibrant-red uppercase tracking-wide mb-2">[04] ARCHIVE</div>
             <h2 class="font-display font-bold text-4xl sm:text-6xl text-white uppercase tracking-tight">
               Selected work.
             </h2>
@@ -520,11 +489,6 @@
               GROWTH
             </button>
           </div>
-        </div>
-
-        <div class="border-b border-white/10 pb-4 mb-8 flex items-center justify-between font-label text-sm text-zinc-400">
-          <span id="visibleProjectsCount">[SHOWING 6 RELEASES]</span>
-          <span>CLICK ANY ITEM FOR SPECIFICATIONS</span>
         </div>
 
         <!-- Work Cards Grid -->
@@ -731,7 +695,6 @@
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             <div class="lg:col-span-6 space-y-6">
-              <div class="font-label text-sm text-vibrant-red uppercase tracking-wide">[05] PROFILE</div>
               <h2 class="font-display font-bold text-3xl sm:text-5xl text-white uppercase tracking-tight">
                 Discipline. Code. Image.
               </h2>
@@ -780,10 +743,6 @@
         
         <!-- Header: Minimalist Stark Typography (Image 1 Style) -->
         <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14 space-y-3">
-          <div class="inline-flex items-center gap-2 font-label text-sm text-vibrant-red uppercase tracking-wide">
-            <span class="w-1.5 h-1.5 rounded-full bg-vibrant-red animate-pulse"></span>
-            <span>[01] VISUAL PRODUCTION ARCHIVE</span>
-          </div>
           <h2 class="font-display font-bold text-3xl sm:text-5xl text-white uppercase tracking-tight">
             Commercial visuals & media<span class="text-vibrant-red">.</span>
           </h2>
@@ -1101,7 +1060,6 @@
       <div class="max-w-4xl mx-auto px-4 sm:px-8">
         
         <div class="mb-10 text-center md:text-left">
-          <div class="font-label text-sm text-vibrant-red uppercase tracking-wide mb-2">[06] INQUIRIES</div>
           <h2 class="font-display font-bold text-4xl sm:text-6xl text-white uppercase tracking-tight">
             Start a project.
           </h2>
@@ -1299,7 +1257,7 @@
   </footer>
 
   <!-- Main Portfolio Engine (Cache-Busted) -->
-  <script src="assets/js/main.js?v=20261006-glassnav"></script>
+  <script src="assets/js/main.js?v=20261010-cleanup"></script>
 
   <!-- Inline Fey-Style Expandable Accordion Engine -->
   <script>
